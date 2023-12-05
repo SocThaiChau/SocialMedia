@@ -6,7 +6,6 @@ import javax.persistence.*;
 import lombok.*;
 
 @Entity
-//@Table(name="Userabc")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,9 +14,13 @@ public class Account implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long acountId;
+	private int acountId;
 	@Column(name="username", columnDefinition = "nvarchar(200)")
 	private String username;
 	private String password;
+
+	@OneToOne
+	@JoinColumn(name = "userId")
+	private Users users;
 
 }
