@@ -84,6 +84,40 @@
                 <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
                 <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
             </div>
+            
+            <!-- Like, Comment, Share Section -->
+    		<div class="buttonDisplay ms-3 pb-3">
+        		<!-- Like Form -->
+        		<form action="/path/to/like_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-thumbs-up me-1"></i> Like</button>
+        		</form>
+
+        		<!-- Comment Form -->
+        		<form action="/path/to/comment_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-comment me-1"></i> Comment</button>
+        		</form>
+
+        		<!-- Share Form -->
+        		<form action="/path/to/share_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-share me-1"></i> Share</button>
+        		</form>
+    		</div>
+            
+            <!-- Comments Section -->
+    		<div class="comments mt-3 ms-4 me-5">
+        		<!-- Form for adding new comments -->
+        		<form class="comment-form mt-3" action="/path/to/comment_handler" method="post">
+    				<input type="hidden" name="status_id" value="1">
+    				<div class="mb-3">
+        				<textarea class="form-control" rows="3" id="writePost" name="text" placeholder="Viết bình luận..."></textarea>
+    				</div>
+    				<hr class="mb-3">
+    				<button type="submit" class="btn btn-primary writeComment__btnComment mb-3 justify-content-between">Post Comment</button>
+				</form>
+    		</div>
         </div>
 
         <div class="status bg-white">
@@ -103,6 +137,40 @@
                 <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
                 <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
             </div>
+            
+            <!-- Like, Comment, Share Section -->
+    		<div class="buttonDisplay ms-3 pb-3">
+        		<!-- Like Form -->
+        		<form action="/path/to/like_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-thumbs-up me-1"></i> Like</button>
+        		</form>
+
+        		<!-- Comment Form -->
+        		<form action="/path/to/comment_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-comment me-1"></i> Comment</button>
+        		</form>
+
+        		<!-- Share Form -->
+        		<form action="/path/to/share_handler" method="post">
+            		<input type="hidden" name="status_id" value="1">
+            		<button class="btn btn-light btn-sm" type="submit"><i class="fa-regular fa-share me-1"></i> Share</button>
+        		</form>
+    		</div>
+            
+            <!-- Comments Section -->
+    		<div class="comments mt-3 ms-4 me-5">
+        		<!-- Form for adding new comments -->
+        		<form class="comment-form mt-3" action="/path/to/comment_handler" method="post">
+    				<input type="hidden" name="status_id" value="1">
+    				<div class="mb-3">
+        				<textarea class="form-control" rows="3" id="writePost" name="text" placeholder="Viết bình luận..."></textarea>
+    				</div>
+    				<hr class="mb-3">
+    				<button type="submit" class="btn btn-primary writeComment__btnComment mb-3 justify-content-between">Post Comment</button>
+				</form>
+    		</div>
         </div>
 
     </div>
