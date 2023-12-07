@@ -53,7 +53,7 @@
                     <p class="mb-1" style="font-size: 12px;">Public</p>
                 </div>
             </div>
-            <form action="/action_page.php">
+            <form action="<c:url value="/home" />" method="POST">
                 <div class="ms-4 me-5">
                     <textarea class="form-control" rows="3" id="writePost" name="text" placeholder="Hôm nay của bạn như thế nào"></textarea>
                 </div>
@@ -67,43 +67,27 @@
             <button type="button" class="btn btn-primary writePost__btnPost ms-3 me-3 mb-3 justify-content-between">Post</button>
         </div>
 
-        <div class="status bg-white">
-            <div class="status__userProfile d-flex m-2 pt-3 ps-3">
-                <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
-                <div>
-                    <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh</h6>
-                    <p class="mb-1" style="font-size: 12px;">Public</p>
+        <c:forEach items="${posts}" var="post">
+            <div class="status bg-white">
+                <div class="status__userProfile d-flex m-2 pt-3 ps-3">
+                    <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
+                    <div>
+                        <h6 class="mb-1" style="font-size: 14px;">${post.postId}</h6>
+                        <p class="mb-1" style="font-size: 12px;">Public</p>
+                    </div>
+                </div>
+                <div class="status__content">
+                    <p class="ms-4 me-5">${post.content}</p>
+                    <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="img" class="status__contentImg ms-4 me-5">
+                </div>
+                <hr class="ms-4 me-5">
+                <div class="activity-icon ms-3 pb-3">
+                    <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
+                    <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
                 </div>
             </div>
-            <div class="status__content">
-                <p class="ms-4 me-5">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Corporis Dolores Praesentium Dicta Laborum Nihil Accusantium Odit Laboriosam, Sed Sit Autem!</p>
-                <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="img" class="status__contentImg ms-4 me-5">
-            </div>
-            <hr class="ms-4 me-5">
-            <div class="activity-icon ms-3 pb-3">
-                <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
-                <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
-            </div>
-        </div>
+        </c:forEach>
 
-        <div class="status bg-white">
-            <div class="status__userProfile d-flex m-2 pt-3 ps-3">
-                <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
-                <div>
-                    <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh</h6>
-                    <p class="mb-1" style="font-size: 12px;">Public</p>
-                </div>
-            </div>
-            <div class="status__content">
-                <p class="ms-4 me-5">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Corporis Dolores Praesentium Dicta Laborum Nihil Accusantium Odit Laboriosam, Sed Sit Autem!</p>
-                <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="img" class="status__contentImg ms-4 me-5">
-            </div>
-            <hr class="ms-4 me-5">
-            <div class="activity-icon ms-3 pb-3">
-                <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
-                <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
-            </div>
-        </div>
 
     </div>
     <!-- rightSidebar -->
