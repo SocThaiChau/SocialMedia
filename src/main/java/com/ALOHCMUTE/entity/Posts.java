@@ -13,22 +13,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="Posts")
 public class Posts implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PostId")
     private int postId;
-    @Column(columnDefinition = "nvarchar(2000)")
+    
+    @Column(name = "Content", columnDefinition = "nvarchar(2000)")
     private String content;
+    
+    @Column(name = "Image", columnDefinition = "nvarchar(2000)")
     private String image;
+    
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "PostTime")
     private Date postTime;
-    private String privacyLevel;
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
+    
+    @Column(name = "PrivacyLevel")
+    private boolean privacyLevel;
 
     @ManyToOne
     @JoinColumn(name = "userId") // Tên cột foreign key trong bảng Comments
