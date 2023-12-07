@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="Users")
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -40,8 +41,9 @@ public class Users implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "Dob", columnDefinition = "nvarchar(200)")
     private Date dob;
+    
     @Column(name = "Status")
-    private Boolean status;
+    private boolean status;
     
     @Column(name = "Password", columnDefinition = "nvarchar(200)")
     private String password;

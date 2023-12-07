@@ -9,6 +9,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Likes")
 public class Likes implements Serializable {
 	
     @Id

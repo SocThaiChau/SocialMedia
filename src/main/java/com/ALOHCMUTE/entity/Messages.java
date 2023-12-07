@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Messages")
 public class Messages implements Serializable {
 	
     @Id

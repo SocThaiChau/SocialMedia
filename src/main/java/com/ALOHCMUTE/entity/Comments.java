@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Comments")
 public class Comments implements Serializable {
 	
     @Id
