@@ -187,11 +187,17 @@
             
             <!-- Comments Section -->
     		<div class="comments mt-3 ms-4 me-5">
+    			<c:forEach var="comment" items="${comments}">
+        			<div>
+            			<p>${comment.users.username}: ${comment.content}</p>
+        			</div>
+    			</c:forEach>
+    			
         		<!-- Form for adding new comments -->
-        		<form class="comment-form mt-3" action="/path/to/comment_handler" method="post">
-    				<input type="hidden" name="status_id" value="1">
+        		<form class="comment-form mt-3" action="/comments/add-comment" method="post">
+    				<input type="hidden" name="commentId" value="1">
     				<div class="mb-3">
-        				<textarea class="form-control" rows="3" id="writePost" name="text" placeholder="Viết bình luận..."></textarea>
+        				<textarea class="form-control" rows="3" id="writePost" name="content" placeholder="Viết bình luận..."></textarea>
     				</div>
     				<hr class="mb-3">
     				<button type="submit" class="btn btn-primary writeComment__btnComment mb-3 justify-content-between">Post Comment</button>
