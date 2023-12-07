@@ -9,6 +9,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="Profiles")
 public class Profiles implements Serializable {
     private static final long serialVersionUID = 1L;
 

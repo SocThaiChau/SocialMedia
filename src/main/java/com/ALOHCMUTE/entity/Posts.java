@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name ="Posts")
 public class Posts implements Serializable {
     private static final long serialVersionUID = 1L;
 
