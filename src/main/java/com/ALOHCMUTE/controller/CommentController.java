@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.service.CommentService;
+import com.ALOHCMUTE.service.UserService;
 
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
 	@Autowired
     private CommentService commentsService;
+	
+	@Autowired
+	private UserService usersService;
 
     // Display all comments
     @GetMapping("/list")

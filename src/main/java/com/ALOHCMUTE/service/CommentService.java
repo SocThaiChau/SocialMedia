@@ -1,5 +1,6 @@
 package com.ALOHCMUTE.service;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ALOHCMUTE.entity.Comments;
+import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.repository.CommentRepository;
 
 @Service
@@ -28,6 +30,8 @@ public class CommentService{
     }
 
     public void saveComment(Comments comment) {
+        comment.setCreateTime(new Date());
+        comment.setUpdateTime(new Date());
         commentsRepository.save(comment);
     }
 }
