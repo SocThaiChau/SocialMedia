@@ -15,8 +15,13 @@ public class Profiles implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ProfileId")
     private int profileId;
+    
+    @Column(name = "Avatar", columnDefinition = "nvarchar(2000)")
     private String avatar;
+    
+    @Column(name = "Background", columnDefinition = "nvarchar(2000)")
     private String background;
 
     @OneToOne

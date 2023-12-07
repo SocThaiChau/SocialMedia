@@ -11,9 +11,13 @@ import lombok.*;
 @NoArgsConstructor
 @Table(name = "Likes")
 public class Likes implements Serializable {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LikeId")
     private int likeId;
+    
+    @Column(name = "Status")
     private Boolean status;
 
     @ManyToOne

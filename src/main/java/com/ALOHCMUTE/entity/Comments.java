@@ -14,20 +14,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 @Table(name = "Comments")
 public class Comments implements Serializable {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CommentId")
     private int commentId;
-    @Column(columnDefinition = "nvarchar(2000)")
+    
+    @Column(name = "Content",columnDefinition = "nvarchar(2000)")
     private String content;
+    
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "CreateTime")
     private Date createTime;
-    @Column(columnDefinition = "nvarchar(200)")
+    
+    @Column(name = "Image", columnDefinition = "nvarchar(200)")
     private String image;
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
-    private int comment_reply_id;
+    
+    @Column(name = "CommentReplyId")
+    private int commentReplyId;
 
     @ManyToOne
     @JoinColumn(name = "userId")
