@@ -13,36 +13,38 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class PostsModel {
+	private int postId;
 	private String content;
-	private String image;
-	private MultipartFile imageFile; // Luu anh
-	private Date postTime;
-	private boolean privacyLevel;
+	private MultipartFile imageData =null;
+	private String postTime;
+	private boolean privacyLevel = true;
 	private boolean isEdit = false;
 	
 	
+	public int getPostId() {
+		return postId;
+	}
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImage() {
-		return image;
+	
+	public MultipartFile getImageData() {
+		return imageData;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageData(MultipartFile imageData) {
+		this.imageData = imageData;
 	}
-	public MultipartFile getImageFile() {
-		return imageFile;
-	}
-	public void setImageFile(MultipartFile imageFile) {
-		this.imageFile = imageFile;
-	}
-	public Date getPostTime() {
+	public String getPostTime() {
 		return postTime;
 	}
-	public void setPostTime(Date postTime) {
+	public void setPostTime(String postTime) {
 		this.postTime = postTime;
 	}
 	public boolean isPrivacyLevel() {
