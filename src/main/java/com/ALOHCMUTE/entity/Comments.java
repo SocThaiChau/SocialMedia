@@ -34,5 +34,7 @@ public class Comments implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "postId")
+    private Posts posts;
+    
     private Comments comments;
 }
