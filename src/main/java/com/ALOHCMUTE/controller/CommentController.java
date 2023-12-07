@@ -1,6 +1,11 @@
 package com.ALOHCMUTE.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -42,13 +47,16 @@ public class CommentController {
     }
 
     @PostMapping("/add-comment")
-    public String addComment(@RequestParam("commentId") int commentId, @RequestParam("content") String content) {
+    public String addComment(@RequestParam("content") String content,
+    							HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         Comments comment = new Comments();
-        comment.setCommentId(commentId);
         comment.setContent(content);
 
         // Save the comment
         commentsService.saveComment(comment);
+        
+     // tra ve views
+     		resp.sendRedirect(req.getContextPath() + "/home");
 
         return "redirect:/home";
     }
