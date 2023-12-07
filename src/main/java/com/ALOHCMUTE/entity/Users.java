@@ -18,18 +18,32 @@ public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UserId")
     private int userId;
-    @Column(columnDefinition = "nvarchar(200)")
+    
+    @Column(name = "UserName", columnDefinition = "nvarchar(200)")
     private String userName;
-    @Column(columnDefinition = "nvarchar(200)")
+    
+    @Column(name = "Address", columnDefinition = "nvarchar(200)")
     private String address;
+    
+    @Column(name = "Email", columnDefinition = "nvarchar(200)")
     private String email;
+    
+    @Column(name = "Phone", columnDefinition = "nvarchar(200)")
     private String phone;
+    
+    @Column(name = "Gender", columnDefinition = "nvarchar(200)")
     private String gender;
+    
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "Dob", columnDefinition = "nvarchar(200)")
     private Date dob;
+    @Column(name = "Status")
     private Boolean status;
+    
+    @Column(name = "Password", columnDefinition = "nvarchar(200)")
     private String password;
 
 
