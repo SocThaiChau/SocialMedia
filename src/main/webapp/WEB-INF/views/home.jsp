@@ -24,7 +24,7 @@
 <!-- content-area------------ -->
 <div class="row bg-light">
     <!-- leftSidebar -->
-    <div class="leftSidebar col-3 ">
+    <div class="leftSidebar col-3">
         <div class="advertisement bg-white mt-3 ms-3">
             <div class="advertisement__title d-flex m-2 pt-3 ps-3">
                 <h6 class="mb-1" style="font-size: 14px;">Advertisement</h6>
@@ -98,6 +98,7 @@
 				<c:forEach items="${comments}" var="comment" varStatus="loop">
 					<p class="ms-4 me-5">${comment.content}</p>
 				</c:forEach>
+				
 				<!-- Form for adding new comments -->
 				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="postId" value="${post.postId}"></input>
