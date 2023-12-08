@@ -95,13 +95,11 @@
 					    </div>
 					  </div>
 					</div>
-				 <c:forEach items="${post.comments}" var="comment">
-            		<div class="status__comment">
-                		<p class="ms-4 me-5">${comment.content}</p>
-            		</div>
-        		</c:forEach>
+				<c:forEach items="${comments}" var="comment" varStatus="loop">
+					<p class="ms-4 me-5">${comment.content}</p>
+				</c:forEach>
 				<!-- Form for adding new comments -->
-				<form class="comment-form ms-4 me-5" action="/comments/save-or-update-comment" method="post" enctype="multipart/form-data">
+				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="postId" value="${post.postId}"></input>
     				<div class="mb-3 position-relative">
         				<textarea class="form-control" rows="3" id="writeComment" name="content" placeholder="Viết bình luận..."></textarea>

@@ -1,12 +1,22 @@
 package com.ALOHCMUTE.service;
 
-import com.ALOHCMUTE.entity.Posts;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+import com.ALOHCMUTE.entity.Posts;
+import com.ALOHCMUTE.repository.PostsRepository;
+
+@Service
 public class PostService {
 
+	@Autowired
+    private PostsRepository postRepository;
+	
 	public Posts getPostById(int postId) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Posts> optionalPost = postRepository.findById(postId);
+        return optionalPost.orElse(null);
 	}
 
 }

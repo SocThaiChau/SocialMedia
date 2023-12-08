@@ -21,7 +21,7 @@ public class CommentModel {
 	private Date createTime;
 	private MultipartFile image = null;
 	private int commentReplyId;
-	private Posts postId;
+	private int postId;
 	
 	public int getCommentId() {
 		return commentId;
@@ -53,10 +53,10 @@ public class CommentModel {
 	public void setCommentReplyId(int commentReplyId) {
 		this.commentReplyId = commentReplyId;
 	}
-	public Posts getPostId() {
+	public int getPostId() {
 		return postId;
 	}
-	public void setPostId(Posts postId) {
+	public void setPosts(int postId) {
 		this.postId = postId;
 	}
 }
