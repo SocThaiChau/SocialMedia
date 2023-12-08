@@ -60,7 +60,7 @@ public class PostsController {
 	@GetMapping("add")
 	public String Add(ModelMap model) {
 		PostsModel postsModel = new PostsModel();
-		postsModel.setIsEdit(false);
+		postsModel.setEdit(false);
 		model.addAttribute("post", postsModel);
 		return "AddOrEdit";
 		
@@ -106,7 +106,7 @@ public class PostsController {
 		if(opt.isPresent()) {
 			Posts entity = opt.get();
 			BeanUtils.copyProperties(entity, postsModel); //copy từ entity sang Model
-			postsModel.setIsEdit(true);
+			postsModel.setEdit(true);
 			model.addAttribute("posts", postsModel);
 			return new ModelAndView("AddOrEdit",model);
 		}

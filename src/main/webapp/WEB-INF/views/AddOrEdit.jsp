@@ -51,9 +51,9 @@
                 <img src="/assets/avt-profile.png" alt="" class="writePost__userImg me-1">
                 <div>
                     <h6 class="mb-1" style="font-size: 14px;" >${posts.postId}</h6>
-                    <c:if test="${posts.isEdit}">
+                    <c:if test="${posts.edit}">
 				        <!-- Hiển thị nội dung chỉnh sửa -->
-				        <input type="hidden" name="isEdit" value="true">
+				        <input type="hidden" name="edit" value="true">
 				        <input type="hidden" name="postId" value="${posts.postId}">
 				    </c:if>
                     <select class="form-select" name="privacyLevel" style="font-size: 10px;">
