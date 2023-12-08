@@ -25,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.entity.Posts;
 import com.ALOHCMUTE.model.CommentModel;
-import com.ALOHCMUTE.service.impl.CommentService;
-import com.ALOHCMUTE.service.impl.PostService;
+import com.ALOHCMUTE.service.CommentService;
+import com.ALOHCMUTE.service.PostService;
 
 @RestController
 @RequestMapping("/comments")
