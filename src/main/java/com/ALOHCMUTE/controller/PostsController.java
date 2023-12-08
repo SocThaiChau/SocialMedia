@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.entity.Posts;
 import com.ALOHCMUTE.model.PostsModel;
 import com.ALOHCMUTE.service.IPostsService;
@@ -88,7 +89,7 @@ public class PostsController {
 	            e.printStackTrace();
 	            return new ModelAndView("AddOrEdit");
 	        }
-	    }		
+	    }
 		//copy từ Model sang entity
 		BeanUtils.copyProperties(postsModel, entity);
 		// Lưu thông tin thời gian
@@ -118,5 +119,19 @@ public class PostsController {
 			@PathVariable("postId") int postId) {
 		postsService.deleteById(postId);
 		return new ModelAndView("redirect:/home" ,model); 
+	}
+
+	@GetMapping("/comments/{postId}")
+	public ModelAndView showCommentsForPost(@PathVariable("postId") int postId, ModelMap model) {
+	    Optional<Posts> post = postsService.findById(postId);
+
+	    if(post.isPresent()) {
+	        Posts specificPost = post.get();
+	        List<Comments> commentsForPost = specificPost.getComments();
+	        model.addAttribute("post", specificPost);
+	        model.addAttribute("comments", commentsForPost);
+	        return new ModelAndView("comment",model);
+	    }
+	    return new ModelAndView("comment",model);
 	}
 }
