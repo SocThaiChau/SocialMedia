@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +40,8 @@ public class PostsController {
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
+		// Sắp xếp listposts theo postId từ lớn đến bé
+	    listposts.sort(Comparator.comparingInt(Posts::getPostId).reversed());
 		List<String> base64Images = new ArrayList<>();
         for (Posts post : listposts) {
             byte[] imageData = post.getImageData();
@@ -49,7 +52,6 @@ public class PostsController {
                 base64Images.add(null); // hoặc có thể là một giá trị mặc định khác
             }
         }
-        
 		model.addAttribute("posts", listposts);	
 		model.addAttribute("base64Images", base64Images);
 		return "home";
@@ -86,8 +88,7 @@ public class PostsController {
 	            e.printStackTrace();
 	            return new ModelAndView("AddOrEdit");
 	        }
-	    }
-		
+	    }		
 		//copy từ Model sang entity
 		BeanUtils.copyProperties(postsModel, entity);
 		// Lưu thông tin thời gian
@@ -105,6 +106,7 @@ public class PostsController {
 		if(opt.isPresent()) {
 			Posts entity = opt.get();
 			BeanUtils.copyProperties(entity, postsModel); //copy từ entity sang Model
+			postsModel.setIsEdit(true);
 			model.addAttribute("posts", postsModel);
 			return new ModelAndView("AddOrEdit",model);
 		}
