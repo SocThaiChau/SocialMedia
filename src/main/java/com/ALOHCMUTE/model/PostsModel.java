@@ -2,13 +2,12 @@ package com.ALOHCMUTE.model;
 
 import java.util.Date;
 
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 

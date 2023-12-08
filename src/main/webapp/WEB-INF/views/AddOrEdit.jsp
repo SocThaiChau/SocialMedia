@@ -50,7 +50,12 @@
             <div class="writePost__userProfile d-flex m-2 pt-3 ps-3">
                 <img src="/assets/avt-profile.png" alt="" class="writePost__userImg me-1">
                 <div>
-                    <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh</h6>
+                    <h6 class="mb-1" style="font-size: 14px;" >${posts.postId}</h6>
+                    <c:if test="${posts.edit}">
+				        <!-- Hiển thị nội dung chỉnh sửa -->
+				        <input type="hidden" name="edit" value="true">
+				        <input type="hidden" name="postId" value="${posts.postId}">
+				    </c:if>
                     <select class="form-select" name="privacyLevel" style="font-size: 10px;">
 						  <option ${posts.privacyLevel == true ? 'selected': ''} value="true">Public</option>
 						  <option ${posts.privacyLevel == false ? 'selected': ''} value="false">Private</option>
