@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ALOHCMUTE.entity.Comments;
+import com.ALOHCMUTE.entity.Posts;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.repository.CommentRepository;
 
@@ -21,7 +22,7 @@ public class CommentService{
 	@Autowired
     private CommentRepository commentsRepository;
 
-    public List<Comments> getAllComments() {
+    public List<Comments> findAll() {
         return commentsRepository.findAll();
     }
 
@@ -31,7 +32,6 @@ public class CommentService{
 
     public void saveComment(Comments comment) {
         comment.setCreateTime(new Date());
-        comment.setUpdateTime(new Date());
         commentsRepository.save(comment);
     }
 }

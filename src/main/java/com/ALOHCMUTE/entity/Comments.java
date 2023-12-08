@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.ALOHCMUTE.model.PostsModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Data
@@ -28,8 +30,9 @@ public class Comments implements Serializable {
     @Column(name = "CreateTime")
     private Date createTime;
     
-    @Column(name = "Image", columnDefinition = "nvarchar(200)")
-    private String image;
+    @Lob
+    @Column(name = "Image")
+    private byte[] image;
     
     @Column(name = "CommentReplyId")
     private int commentReplyId;
@@ -43,4 +46,68 @@ public class Comments implements Serializable {
     private Posts posts;
     
     private Comments comments;
+
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public int getCommentReplyId() {
+		return commentReplyId;
+	}
+
+	public void setCommentReplyId(int commentReplyId) {
+		this.commentReplyId = commentReplyId;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Posts getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Posts posts) {
+		this.posts = posts;
+	}
+
+	public Comments getComments() {
+		return comments;
+	}
+
+	public void setComments(Comments comments) {
+		this.comments = comments;
+	}
 }
