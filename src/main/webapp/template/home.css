@@ -17,9 +17,9 @@ a {
 }
 
 .navbar__search input{
-    height: 32px !important;
+    height: 37px !important;
     width: 280px;
-    border-radius: 20px;
+    border-radius: 4px;
     font-size: 12px;
 }
 

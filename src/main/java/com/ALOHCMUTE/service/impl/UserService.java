@@ -11,4 +11,14 @@ import com.ALOHCMUTE.repository.UserRepository;
 @Service
 public class UserService {
 
+	@Autowired
+    private UserRepository userRepository;
+
+    public Users getUserByUsername(String username) {
+        return userRepository.findByUserName(username);
+    }
+
+    public Users getUserById(int userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
 }
