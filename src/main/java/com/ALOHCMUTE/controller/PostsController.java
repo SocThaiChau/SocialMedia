@@ -89,7 +89,7 @@ public class PostsController {
 	            e.printStackTrace();
 	            return new ModelAndView("AddOrEdit");
 	        }
-	    }		
+	    }
 		//copy từ Model sang entity
 		BeanUtils.copyProperties(postsModel, entity);
 		// Lưu thông tin thời gian
@@ -120,11 +120,11 @@ public class PostsController {
 		postsService.deleteById(postId);
 		return new ModelAndView("redirect:/home" ,model); 
 	}
-	
+
 	@GetMapping("/comments/{postId}")
 	public ModelAndView showCommentsForPost(@PathVariable("postId") int postId, ModelMap model) {
 	    Optional<Posts> post = postsService.findById(postId);
-	    
+
 	    if(post.isPresent()) {
 	        Posts specificPost = post.get();
 	        List<Comments> commentsForPost = specificPost.getComments();

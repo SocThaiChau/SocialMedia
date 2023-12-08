@@ -2,6 +2,7 @@ package com.ALOHCMUTE.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 import com.ALOHCMUTE.model.PostsModel;
@@ -12,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Comments")
@@ -34,8 +37,8 @@ public class Comments implements Serializable {
     @Column(name = "Image")
     private byte[] image;
     
-    @Column(name = "CommentReplyId")
-    private int commentReplyId;
+//    @Column(name = "CommentReplyId")
+//    private int commentReplyId;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -44,70 +47,12 @@ public class Comments implements Serializable {
     @ManyToOne
     @JoinColumn(name = "postId")
     private Posts posts;
-    
-    private Comments comments;
 
-	public int getCommentId() {
-		return commentId;
-	}
+	@OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comments> comments;
 
-	public void setCommentId(int commentId) {
-		this.commentId = commentId;
-	}
+	@ManyToOne
+	@JoinColumn(name = "CommentReplyId")
+	private Comments parentComment;
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
-	public int getCommentReplyId() {
-		return commentReplyId;
-	}
-
-	public void setCommentReplyId(int commentReplyId) {
-		this.commentReplyId = commentReplyId;
-	}
-
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}
-
-	public Posts getPosts() {
-		return posts;
-	}
-
-	public void setPosts(Posts posts) {
-		this.posts = posts;
-	}
-
-	public Comments getComments() {
-		return comments;
-	}
-
-	public void setComments(Comments comments) {
-		this.comments = comments;
-	}
 }

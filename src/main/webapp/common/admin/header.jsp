@@ -3,7 +3,7 @@
 	<%@ include file="/common/taglib.jsp"%>
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary ps-3 fixed-top">
     <div class="container-fluid d-flex justify-content-between ">
-        <a class="navbar-brand ms-3" href="#">ALOHCMUTE</a>
+        <a class="navbar-brand ms-3" href="/home">ALOHCMUTE</a>
         <div style="width: 500px"  id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item active">
