@@ -45,46 +45,56 @@
     </div>
     <!-- content-area -->
     <div class="content-area col-6 bg-white">
-        <div class="writePost bg-white">
-            <div class="writePost__userProfile d-flex m-2 pt-3 ps-3">
-                <img src="/assets/avt-profile.png" alt="" class="writePost__userImg me-1">
-                <div>
-                    <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh</h6>
-                    <p class="mb-1" style="font-size: 12px;">Public</p>
-                </div>
-            </div>
-            <form action="<c:url value="/home" />" method="POST">
-                <div class="ms-4 me-5">
-                    <textarea class="form-control" rows="3" id="writePost" name="text" placeholder="Hôm nay của bạn như thế nào"></textarea>
-                </div>
-            </form>
-            <hr class="ms-4 me-5">
-            <!-- <div class="">
-                <i class="fa-solid fa-video"></i>
-                <i class="fa-solid fa-image"></i>
-                <i class="fa-brands fa-spotify"></i>
-            </div> -->
-            <button type="button" class="btn btn-primary writePost__btnPost ms-3 me-3 mb-3 justify-content-between">Post</button>
-        </div>
+     
+           <a href="/add" class="btn btn-primary justify-content-between" style="width:100%">Post</a>
 
-        <c:forEach items="${posts}" var="post">
+        <c:forEach items="${posts}" var="post" varStatus="loop">
             <div class="status bg-white">
                 <div class="status__userProfile d-flex m-2 pt-3 ps-3">
                     <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
                     <div>
                         <h6 class="mb-1" style="font-size: 14px;">${post.postId}</h6>
-                        <p class="mb-1" style="font-size: 12px;">Public</p>
+                        <p class="mb-1" style="font-size: 12px;">${post.privacyLevel == true ? 'Public': 'Private'}</p>
+                        <p class="mb-1" style="font-size: 12px;">${post.postTime}</p>
                     </div>
                 </div>
                 <div class="status__content">
                     <p class="ms-4 me-5">${post.content}</p>
-                    <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="img" class="status__contentImg ms-4 me-5">
+                    <c:if test="${not empty base64Images[loop.index]}">
+                    	<img src="data:image/jpeg;base64,${base64Images[loop.index]}" alt="img" class="status__contentImg ms-4 me-5">
+					</c:if>
                 </div>
                 <hr class="ms-4 me-5">
-                <div class="activity-icon ms-3 pb-3">
-                    <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
-                    <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
-                </div>
+                <div class="activity-icon ms-3 pb-3" style="display: flex;  justify-content: space-between;">
+                        <div >
+                            <i class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
+                            <i class="fa-regular fa-comment ps-3 pe-3"> 50 </i>
+                        </div>
+                        <div class="me-4">
+                            <a href="/edit/${post.postId}" > <i class="fa-solid fa-pen-to-square ps-3 pe-3"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#ModalDeletePost${post.postId}" data-post-id="${post.postId}"><i class="fa-solid fa-trash ps-3 pe-3 text-danger"></i></a>
+                        </div>
+               </div>
+            		<!-- The Modal Button Delete Post-->
+					<div class="modal" id="ModalDeletePost${post.postId}">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					
+					
+					      <!-- Modal body -->
+					      <div class="modal-body">
+					        Bạn có muốn xóa chứ ?
+					      </div>
+					
+					      <!-- Modal footer -->
+					      <div class="modal-footer">
+					     	<a href="/delete/${post.postId}" type="button" class="btn btn-danger">Delete</a>
+					        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+					      </div>
+					
+					    </div>
+					  </div>
+					</div>
             </div>
         </c:forEach>
 
@@ -179,6 +189,7 @@
 
     </div>
 </div>
-<script src="function.js"></script>
+<script >
+</script>
 </body>
 </html>
