@@ -55,4 +55,68 @@ public class Comments implements Serializable {
 	@JoinColumn(name = "CommentReplyId")
 	private Comments parentComment;
 
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Posts getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Posts posts) {
+		this.posts = posts;
+	}
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+	public Comments getParentComment() {
+		return parentComment;
+	}
+
+	public void setParentComment(Comments parentComment) {
+		this.parentComment = parentComment;
+	}
+	
 }

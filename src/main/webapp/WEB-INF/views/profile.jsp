@@ -39,79 +39,79 @@
 				<div class="card-body">
 					<div class="d-flex flex-column align-items-center text-center">
 						<img
-								src="https://www.nawpic.com/media/2020/desktop-backgrounds-nawpic-14.jpg"
+								src="${profiles.background}"
 								alt="Background" class="img-fluid"
 								style="width: 1400px; height: 300px; border-radius: 10px;">
 						<img
-								src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/395335595_1017822022755672_3434529236999802980_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF7lyaVR-piGmBZi8I3LzD87Nl3PVJ8aa7s2Xc9UnxprhruZBvhySfYrHG_7ur4T6yHr45eJ7PPUoo8HArVIHor&_nc_ohc=xcTteRNHOcIAX8VuWeE&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfCzQ_Do13AqtoCXAPHTpFZjQFe_d2Wq4FSnJFhxo-ER-w&oe=6577FA62"
+								src="${profiles.avatar}"
 								alt="Avatar" class="rounded-circle" width="150"
 								style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">
-						<div class="mt-3 mb-5"
-							 style="position: absolute; top: 75%; right: 700px; transform: translateY(-50%); text-align: left; color: black;">
-							<h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>
-							<p style="margin-bottom: 5px;">${profiles.avatar}</p>
-							<button class="btn btn-primary">Follow</button>
-							<button class="btn btn-outline-primary">Message</button>
+						<div class="mt-3 mb-5" style="position: absolute; top: 75%; left: 300px; transform: translateY(-50%); text-align: left; color: black;">
+						    <h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>
+						    <p style="margin-bottom: 5px;">${profiles.profileId}</p>
+						    <button class="btn btn-primary">Follow</button>
+						    <button class="btn btn-outline-primary">Message</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8 mb-5" style="padding-top: 55px;">
-				<div class="card mb-3">
-					<div class="card-body">
+					<div class="card mb-3">
+						<div class="card-body">
 
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Full Name</h6>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Full Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">${profiles.users.userName}
+								</div>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.userName}
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Gender</h6>
+								</div>
+<div class="col-sm-9 text-secondary">${profiles.users.gender}</div>
 							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Gender</h6>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Day Of Birthday</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">${profiles.users.dob}</div>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.gender}</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Day Of Birthday</h6>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">${profiles.users.email}</div>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.dob}</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Email</h6>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Phone</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">${profiles.users.phone}</div>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.email}</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Phone</h6>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Address</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">${profiles.users.address}</div>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.phone}</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<h6 class="mb-0">Address</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">${profiles.users.address}</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-12">
-								<a class="btn btn-info " target="__blank">Chỉnh sửa thông
-									tin cá nhân</a>
+							<hr>
+							<div class="row">
+								<div class="col-sm-12">
+									<a class="btn btn-info " target="__blank">Chỉnh sửa thông
+										tin cá nhân</a>
+								</div>
+								<button onclick="showEditForm()">Chỉnh sửa thông tin cá nhân</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	</c:forEach>
 </div>
