@@ -35,27 +35,47 @@
 <div class="container">
 	<c:forEach items="${listProfile}" var="profiles">
 		<div class="main-body">
-			<div class="col-md-12 mb-5">
-				<div class="card-body">
-					<div class="d-flex flex-column align-items-center text-center">
-						<img
-								src="https://www.nawpic.com/media/2020/desktop-backgrounds-nawpic-14.jpg"
-								alt="Background" class="img-fluid"
-								style="width: 1400px; height: 300px; border-radius: 10px;">
-						<img
-								src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/395335595_1017822022755672_3434529236999802980_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF7lyaVR-piGmBZi8I3LzD87Nl3PVJ8aa7s2Xc9UnxprhruZBvhySfYrHG_7ur4T6yHr45eJ7PPUoo8HArVIHor&_nc_ohc=xcTteRNHOcIAX8VuWeE&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfCzQ_Do13AqtoCXAPHTpFZjQFe_d2Wq4FSnJFhxo-ER-w&oe=6577FA62"
-								alt="Avatar" class="rounded-circle" width="150"
-								style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">
-						<div class="mt-3 mb-5"
-							 style="position: absolute; top: 75%; right: 700px; transform: translateY(-50%); text-align: left; color: black;">
-							<h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>
-							<p style="margin-bottom: 5px;">${profiles.avatar}</p>
-							<button class="btn btn-primary">Follow</button>
-							<button class="btn btn-outline-primary">Message</button>
-						</div>
-					</div>
+<%--			<div class="col-md-12 mb-5">--%>
+<%--				<div class="card-body">--%>
+<%--					<div class="d-flex flex-column align-items-center text-center">--%>
+<%--						<img--%>
+<%--								src="https://www.nawpic.com/media/2020/desktop-backgrounds-nawpic-14.jpg"--%>
+<%--								alt="Background" class="img-fluid"--%>
+<%--								style="width: 1400px; height: 300px; border-radius: 10px;">--%>
+<%--						<img--%>
+<%--								src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/395335595_1017822022755672_3434529236999802980_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF7lyaVR-piGmBZi8I3LzD87Nl3PVJ8aa7s2Xc9UnxprhruZBvhySfYrHG_7ur4T6yHr45eJ7PPUoo8HArVIHor&_nc_ohc=xcTteRNHOcIAX8VuWeE&_nc_ht=scontent.fsgn5-14.fna&oh=00_AfCzQ_Do13AqtoCXAPHTpFZjQFe_d2Wq4FSnJFhxo-ER-w&oe=6577FA62"--%>
+<%--								alt="Avatar" class="rounded-circle" width="150"--%>
+<%--								style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">--%>
+<%--						<div class="mt-3 mb-5"--%>
+<%--							 style="position: absolute; top: 75%; right: 700px; transform: translateY(-50%); text-align: left; color: black;">--%>
+<%--							<h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>--%>
+<%--							<p style="margin-bottom: 5px;">${profiles.avatar}</p>--%>
+<%--							<button class="btn btn-primary">Follow</button>--%>
+<%--							<button class="btn btn-outline-primary">Message</button>--%>
+<%--						</div>--%>
+<%--					</div>--%>
+<%--				</div>--%>
+<%--			</div>--%>
+	<div class="col-md-12 mb-5">
+		<div class="card-body">
+			<div class="d-flex flex-column align-items-center text-center">
+				<img
+						src="${profiles.background}"
+						alt="Background" class="img-fluid"
+						style="width: 1400px; height: 300px; border-radius: 10px;">
+				<img
+						src="${profiles.avatar}"
+						alt="Avatar" class="rounded-circle" width="150"
+						style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">
+				<div class="mt-3 mb-5" style="position: absolute; top: 75%; left: 300px; transform: translateY(-50%); text-align: left; color: black;">
+					<h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>
+					<p style="margin-bottom: 5px;">${profiles.profileId}</p>
+					<button class="btn btn-primary">Follow</button>
+					<button class="btn btn-outline-primary">Message</button>
 				</div>
 			</div>
+		</div>
+	</div>
 			<div class="col-md-8 mb-5" style="padding-top: 55px;">
 				<div class="card mb-3">
 					<div class="card-body">
