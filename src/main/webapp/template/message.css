@@ -17,7 +17,7 @@ body {
 }
 
 .chat-app .people-list {
-	width: 280px;
+	width: 300px;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -126,8 +126,8 @@ body {
 
 .chat .chat-history .message {
 	color: #444;
-	padding: 18px 20px;
-	line-height: 26px;
+	padding: 14px 16px;
+	line-height: 20px;
 	font-size: 16px;
 	border-radius: 7px;
 	display: inline-block;
