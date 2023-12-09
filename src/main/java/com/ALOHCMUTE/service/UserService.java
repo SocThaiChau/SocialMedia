@@ -9,7 +9,7 @@ import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserService{
 
 	@Autowired
     private UserRepository userRepository;
@@ -21,4 +21,6 @@ public class UserService {
     public Users getUserById(int userId) {
         return userRepository.findById(userId).orElse(null);
     }
+
+
 }

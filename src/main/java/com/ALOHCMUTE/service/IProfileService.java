@@ -11,17 +11,6 @@ import com.ALOHCMUTE.entity.Profiles;
 
 
 public interface IProfileService {
-	void deleteAll();
-
-    void delete(Profiles entity);
-
-    void deleteById(Integer id);
-
-    long count();
-
-    Optional<Profiles> findById(Integer id);
-
-    List<Profiles> findAllById(Iterable<Integer> ids);
 
     List<Profiles> findAll(Sort sort);
 
@@ -29,5 +18,4 @@ public interface IProfileService {
 
     List<Profiles> findAll();
 
-    <S extends Profiles> S save(S entity);
 }

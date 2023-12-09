@@ -260,6 +260,11 @@ public class Users implements Serializable {
 	public void setMessages(List<Messages> messages) {
 		this.messages = messages;
 	}
+
+	public Profiles orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
     
