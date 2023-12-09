@@ -24,7 +24,7 @@
 <!-- content-area------------ -->
 <div class="row bg-light">
     <!-- leftSidebar -->
-    <div class="leftSidebar col-3 ">
+    <div class="leftSidebar col-3">
         <div class="advertisement bg-white mt-3 ms-3">
             <div class="advertisement__title d-flex m-2 pt-3 ps-3">
                 <h6 class="mb-1" style="font-size: 14px;">Advertisement</h6>
@@ -53,7 +53,7 @@
                 <div class="status__userProfile d-flex m-2 pt-3 ps-3">
                     <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
                     <div>
-                        <h6 class="mb-1" style="font-size: 14px;">${post.postId}</h6>
+                        <h6 class="mb-1" style="font-size: 14px;">${post.users.userName}</h6>
                         <p class="mb-1" style="font-size: 12px;">${post.privacyLevel == true ? 'Public': 'Private'}</p>
                         <p class="mb-1" style="font-size: 12px;">${post.postTime}</p>
                     </div>
