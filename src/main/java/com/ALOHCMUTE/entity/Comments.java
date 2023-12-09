@@ -43,4 +43,22 @@ public class Comments implements Serializable {
     private Posts posts;
     
     private Comments comments;
+
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+    
+    
 }

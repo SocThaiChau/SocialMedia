@@ -64,4 +64,6 @@ public class Users implements Serializable {
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Messages> messages;
+    
+    
 }

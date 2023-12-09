@@ -10,8 +10,10 @@
                     <a style="color: white" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: white" class="nav-link" href="#">Trang cá nhân</a>
-                </li>
+				    <a style="color: white" class="nav-link" href="/profile">Trang cá nhân</a>
+				</li>
+
+
             </ul>
         </div>
         <form action="/action_page.php" style="width: 250px">
@@ -33,7 +35,7 @@
             <img src="assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="mb-2">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/profile">
                         <i class="fa-solid fa-user me-1"></i>
                         Trang cá nhân
                     </a>

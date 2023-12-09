@@ -22,27 +22,35 @@
 
 <body>
 <!-- content-area------------ -->
-<div class="row bg-light">
-    <!-- leftSidebar -->
-    <div class="leftSidebar col-3 ">
-        <div class="advertisement bg-white mt-3 ms-3">
-            <div class="advertisement__title d-flex m-2 pt-3 ps-3">
-                <h6 class="mb-1" style="font-size: 14px;">Advertisement</h6>
-            </div>
-            <img src="/assets/Advertisement-img.png" alt="" class="advertisement__img me-2 ms-2 pe-3 ps-3 pb-3">
-        </div>
-        <div class="notification bg-white mt-3 ms-3">
-            <div class="advertisement__title  m-2 pt-3 ps-3 d-flex">
-                <i class="fa-solid fa-bell me-2"></i>
-                <h6 class="mb-1 text-" >Notification</h6>
-            </div>
-            <div class="notification__content m-2 pt-3 ps-3 pb-3 d-flex">
-                <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh đã nhắc đến bạn trong 1 bình luận</h6>
+	<div class="row bg-light">
+	    <!-- leftSidebar -->
+	    <div class="leftSidebar col-3">
+	    <div class="advertisement bg-white mt-3 ms-3">
+	    	<div class="d-flex rightSidebar__user ms-2 mb-2">
+            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
+            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
+        	</div>
+	    </div>
+	    <div class="advertisement bg-white mt-3 ms-3">
+	        <!-- Quảng cáo -->
+	        <div class="advertisement__title d-flex m-2 pt-3 ps-3">
+	            <h6 class="mb-1" style="font-size: 14px;">Advertisement</h6>
+	        </div>
+	        <img src="/assets/Advertisement-img.png" alt="" class="advertisement__img me-2 ms-2 pe-3 ps-3 pb-3">
+	    </div>
+	
+	    <!-- Thông báo -->
+	    <div class="notification bg-white mt-3 ms-3">
+	        <div class="advertisement__title  m-2 pt-3 ps-3 d-flex">
+	            <i class="fa-solid fa-bell me-2"></i>
+	            <h6 class="mb-1 text-">Notification</h6>
+	        </div>
+	        <div class="notification__content m-2 pt-3 ps-3 pb-3 d-flex">
+	            <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh đã nhắc đến bạn trong 1 bình luận</h6>
+	        </div>
+	    </div>
+	</div>
 
-            </div>
-
-        </div>
-    </div>
     <!-- content-area -->
     <div class="content-area col-6 bg-white">
         <div class="writePost bg-white">

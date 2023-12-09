@@ -27,4 +27,22 @@ public class Profiles implements Serializable {
     @OneToOne
     @JoinColumn(name = "userId")
     private Users users;
+
+	public int getProfileId() {
+		return profileId;
+	}
+
+	public void setProfileId(int profileId) {
+		this.profileId = profileId;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+	
+    
 }
