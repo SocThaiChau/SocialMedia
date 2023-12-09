@@ -20,7 +20,8 @@ public class SearchController {
 
         if (user != null) {
             model.addAttribute("user", user);
-            return "redirect:/users/" + user.getUserId() + "/profile";
+			//return "redirect:/users/" + user.getUserId() + "/profile"; 
+            return "redirect:/profile";
         } else {
             // Xử lý trường hợp không tìm thấy người dùng
             return "redirect:/search?error=true";

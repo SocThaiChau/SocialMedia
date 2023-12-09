@@ -55,4 +55,118 @@ public class Comments implements Serializable {
 	@JoinColumn(name = "CommentReplyId")
 	private Comments parentComment;
 
+	/**
+	 * @return the commentId
+	 */
+	public int getCommentId() {
+		return commentId;
+	}
+
+	/**
+	 * @param commentId the commentId to set
+	 */
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	/**
+	 * @return the createTime
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	/**
+	 * @param createTime the createTime to set
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public byte[] getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	/**
+	 * @return the users
+	 */
+	public Users getUsers() {
+		return users;
+	}
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	/**
+	 * @return the posts
+	 */
+	public Posts getPosts() {
+		return posts;
+	}
+
+	/**
+	 * @param posts the posts to set
+	 */
+	public void setPosts(Posts posts) {
+		this.posts = posts;
+	}
+
+	/**
+	 * @return the comments
+	 */
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+	/**
+	 * @param comments the comments to set
+	 */
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+	/**
+	 * @return the parentComment
+	 */
+	public Comments getParentComment() {
+		return parentComment;
+	}
+
+	/**
+	 * @param parentComment the parentComment to set
+	 */
+	public void setParentComment(Comments parentComment) {
+		this.parentComment = parentComment;
+	}
+	
+	
+
 }
