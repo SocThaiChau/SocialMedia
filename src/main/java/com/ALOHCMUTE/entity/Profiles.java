@@ -43,6 +43,22 @@ public class Profiles implements Serializable {
 	public void setUsers(Users users) {
 		this.users = users;
 	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getBackground() {
+		return background;
+	}
+
+	public void setBackground(String background) {
+		this.background = background;
+	}
 	
     
 }

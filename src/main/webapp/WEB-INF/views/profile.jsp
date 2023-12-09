@@ -46,8 +46,8 @@
 							style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">
 						<div class="mt-3 mb-5"
 							style="position: absolute; top: 75%; right: 700px; transform: translateY(-50%); text-align: left; color: black;">
-							<h4 style="margin-bottom: 2px;">Quỳnh My</h4>
-							<p style="margin-bottom: 5px;">TP.Quảng Ngãi, Quảng Ngãi</p>
+							<h4 style="margin-bottom: 2px;">${profiles.users.userName}</h4>
+							<p style="margin-bottom: 5px;">${profiles.users.gender}</p>
 							<button class="btn btn-primary">Follow</button>
 							<button class="btn btn-outline-primary">Message</button>
 						</div>
@@ -61,7 +61,7 @@
 							<div class="col-sm-3">
 								<h6 class="mb-0">Full Name</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.user_name}
+							<div class="col-sm-9 text-secondary">${profiles.profileId}
 							</div>
 						</div>
 						<hr>
@@ -69,35 +69,35 @@
 							<div class="col-sm-3">
 								<h6 class="mb-0">Gender</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.gender}</div>
+							<div class="col-sm-9 text-secondary">${profiles.users.gender}</div>
 						</div>
 						<hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Day Of Birthday</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.dob}</div>
+							<div class="col-sm-9 text-secondary">${profiles.users.dob}</div>
 						</div>
 						<hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Email</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.email}</div>
+							<div class="col-sm-9 text-secondary">${profiles.users.email}</div>
 						</div>
 						<hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Phone</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.phone}</div>
+							<div class="col-sm-9 text-secondary">${profiles.users.phone}</div>
 						</div>
 						<hr>
 						<div class="row">
 							<div class="col-sm-3">
 								<h6 class="mb-0">Address</h6>
 							</div>
-							<div class="col-sm-9 text-secondary">${profiles.address}</div>
+							<div class="col-sm-9 text-secondary">${profiles.users.address}</div>
 						</div>
 						<hr>
 						<div class="row">
