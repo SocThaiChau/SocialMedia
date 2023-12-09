@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.ALOHCMUTE.entity.Messages;
 import com.ALOHCMUTE.entity.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Integer>{
-
-	@Query("SELECT u FROM Users u WHERE u.userId = :receiverId")
-	Users findUserById(@Param("receiverId") int receiverId);
+public interface MessageRepository extends JpaRepository<Messages, Integer>{
+	
+	@Query("SELECT m FROM Messages m WHERE :receiverId = m.receiverId OR :receiverId = m.users")
+	List<Messages> findUserById(@Param("receiverId") int receiverId);
 }
