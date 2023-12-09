@@ -13,7 +13,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <link href="/template/message.css" rel="stylesheet">
+    <link rel="stylesheet" href="/template/home.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -24,10 +24,10 @@
 <!-- content-area------------ -->
 <div class="row bg-light">
     <!-- leftSidebar -->
-    <div class="leftSidebar offset-1 col-3">
+    <div class="leftSidebar col-3">
         <div class="card chat-app">
 			<div id="plist" class="people-list">
-				<h4 class="mt-3">Tin nhắn</h4>
+				<h4>Tin nhắn</h4>
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -35,58 +35,58 @@
 					<input type="text" class="form-control" placeholder="Search...">
 				</div>
 				<ul class="list-unstyled chat-list mt-2 mb-0">
-					<li class="clearfix mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar1.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+					<li class="clearfix"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Vincent Porter</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle offline"></i> left 7 mins ago
+								<i class="fa fa-circle offline"></i> Truy cập 7 phút trước
 							</div>
 						</div></li>
-					<li class="clearfix active mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar2.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+					<li class="clearfix active"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Aiden Chavez</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle online"></i> online
+								<i class="fa fa-circle online"></i> Vừa truy cập
 							</div>
 						</div></li>
-					<li class="clearfix mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar3.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+					<li class="clearfix" style="display: flex; align-items: center;"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Mike Thomas</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle online"></i> online
+								<i class="fa fa-circle online"></i> Vừa truy cập
 							</div>
 						</div></li>
-							<li class="clearfix mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar7.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+							<li class="clearfix"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Christian Kelly</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle offline"></i> left 10 hours ago
+								<i class="fa fa-circle offline"></i> Truy cập 10 giờ trước
 							</div>
 						</div></li>
-					<li class="clearfix mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar8.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+					<li class="clearfix"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Monica Ward</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle online"></i> online
+								<i class="fa fa-circle online"></i> Vừa truy cập
 							</div>
 						</div></li>
-					<li class="clearfix mt-3" style="display: flex; align-items: center;"><img
-						src="https://bootdey.com/img/Content/avatar/avatar3.png"
-						alt="avatar" style="width: 50px; margin-right: 10px;">
+					<li class="clearfix"><img
+						src="/assets/avt-profile.png"
+						alt="avatar">
 						<div class="about">
-							<div class="name">Dean Henry</div>
+							<div class="name">Nguyễn Chí Thanh</div>
 							<div class="status">
-								<i class="fa fa-circle offline"></i> offline since Oct 28
+								<i class="fa fa-circle offline"></i> Truy cập lần cuối 28/10
 							</div>
 						</div></li>
 				</ul>
@@ -95,21 +95,22 @@
     </div>
     
     <!-- content-area -->
-    <div class="content-area col-7 mt-4 bg-white" style="max-height: 600px;">
+    <div class="content-area col-9 bg-white">
         <div class="chat d-flex flex-column h-100">
 			<div class="chat-header clearfix">
 				<div class="row">
 					<div class="col-lg-6" style="display: flex; align-items: center;">
     					<a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-        					<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar" style="width: 50px; margin-right: 10px;">
+        					<img src="/assets/avt-profile.png" alt="avatar" style="width: 50px; margin-right: 10px;">
     					</a>
     					<div class="chat-about">
-        					<h6 class="m-b-0">Aiden Chavez</h6>
-        					<small>Last seen: 2 hours ago</small>
+        					<h6 class="m-b-0">Nguyễn Chí Thanh</h6>
+        					<small>Truy cập 2 giờ trước</small>
     					</div>
 					</div>
 
 					<div class="col-lg-6 text-lg-end text-sm-start mt-lg-0 mt-sm-3">
+						<a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-phone"></i></a>
 						<a href="javascript:void(0);" class="btn btn-outline-secondary"><i
 						class="fa fa-camera"></i></a> <a href="javascript:void(0);"
 						class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
@@ -123,25 +124,17 @@
 				<ul class="m-b-0">
 					<li class="clearfix">
 						<div class="message-data text-lg-end text-sm-start mt-lg-0 mt-sm-3">
-							<span class="message-data-time">10:10 AM, Today</span> <img
-								src="https://bootdey.com/img/Content/avatar/avatar7.png"
+							<span class="message-data-time">10:10 AM, Hôm nay</span> <img
+								src="/assets/avt-profile.png"
 								alt="avatar" style="width: 50px;">
 						</div>
-						<div class="message other-message float-right text-lg-end text-sm-start mt-lg-0 mt-sm-3">Hi Aiden,
-							how are you? How is the project coming along?</div>
+						<div class="message other-message float-right text-lg-end text-sm-start mt-lg-0 mt-sm-3">Chào</div>
 					</li>
 					<li class="clearfix">
 						<div class="message-data">
-							<span class="message-data-time">10:12 AM, Today</span>
+							<span class="message-data-time">10:12 AM, Hôm nay</span>
 						</div>
-						<div class="message my-message">Are we meeting today?</div>
-					</li>
-					<li class="clearfix">
-						<div class="message-data">
-							<span class="message-data-time">10:15 AM, Today</span>
-						</div>
-						<div class="message my-message">Project has been already
-							finished and I have results to show you.</div>
+						<div class="message my-message">Chào</div>
 					</li>
 				</ul>
 			</div>

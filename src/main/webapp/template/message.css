@@ -258,3 +258,7 @@ body {
 		overflow-x: auto
 	}
 }
+
+.input-group-text {
+	padding: 10px;
+}
