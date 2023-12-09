@@ -45,7 +45,7 @@
     </div>
     <!-- content-area -->
     <div class="content-area col-6 bg-white">
-     
+
            <a href="/add" class="btn btn-primary justify-content-between" style="width:100%">Post</a>
 
         <c:forEach items="${posts}" var="post" varStatus="loop">
@@ -79,19 +79,19 @@
 					<div class="modal" id="ModalDeletePost${post.postId}">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
-					
-					
+
+
 					      <!-- Modal body -->
 					      <div class="modal-body">
 					        Bạn có muốn xóa chứ ?
 					      </div>
-					
+
 					      <!-- Modal footer -->
 					      <div class="modal-footer">
 					     	<a href="/delete/${post.postId}" type="button" class="btn btn-danger">Delete</a>
 					        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
 					      </div>
-					
+
 					    </div>
 					  </div>
 					</div>
@@ -207,7 +207,6 @@
 
     </div>
 </div>
-<script >
-</script>
+<script src="function.js"></script>
 </body>
 </html>

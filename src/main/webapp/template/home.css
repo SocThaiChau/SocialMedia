@@ -9,7 +9,6 @@
 
 
 /* navbar */
-
 .avatar-profile{
     width: 36px;
 
@@ -70,6 +69,10 @@ textarea{
     overflow: auto;
     padding-top: 55px;
 }
+
+.sidebar-profile-box{
+	background: #fff;
+}
 .advertisement{
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
@@ -81,6 +84,7 @@ textarea{
     height: 100%;
     overflow: auto;
     padding-top: 55px;
+    position: sticky;
 }
 .rightSidebar__userImg{
     width: 36px;
@@ -105,3 +109,4 @@ textarea{
 .writeComment__btnComment{
     width: calc(100%);
 }
+
