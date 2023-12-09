@@ -26,6 +26,7 @@
         <sitemesh:write property='body'></sitemesh:write>
     </div>
 </div>
+
 <script src="function.js"></script>
 </body>
 </html>

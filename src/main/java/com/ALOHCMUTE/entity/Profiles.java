@@ -3,6 +3,8 @@ package com.ALOHCMUTE.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.ALOHCMUTE.repository.UserRepository;
+
 import lombok.*;
 
 @Entity
@@ -12,7 +14,6 @@ import lombok.*;
 @Table(name ="Profiles")
 public class Profiles implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProfileId")
