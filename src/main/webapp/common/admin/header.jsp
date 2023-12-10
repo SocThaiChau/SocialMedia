@@ -14,9 +14,9 @@
                 </li>
             </ul>
         </div>
-        <form action="/action_page.php" style="width: 250px">
+        <form action="/search" method="POST" style="width: 250px">
             <div class="navbar__search me-3" style="display: flex; margin-left: -50px">
-                <input type="text" class="form-control" id="search" placeholder="Search..." >
+                <input name="keyword" type="text" class="form-control" id="search" placeholder="Search..." >
 <%--                <div class="input-group-append">--%>
 <%--                    <i class="fa fa-search" style="cursor: pointer;"></i>--%>
 <%--                </div>--%>
@@ -33,7 +33,7 @@
             <img src="assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="mb-2">
-                    <a class="dropdown-item" href="/profile">
+                    <a class="dropdown-item" href="/profile/${userId}">
                         <i class="fa-solid fa-user me-1"></i>
                         Profile
                     </a>

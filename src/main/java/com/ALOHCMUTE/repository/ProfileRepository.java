@@ -8,5 +8,5 @@ import com.ALOHCMUTE.entity.Profiles;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<Profiles, Integer>{
-	Profiles findProfileByUsers_UserId(int userId);
+	Profiles findByUsersUserId(int userId);
 }

@@ -21,6 +21,7 @@ import com.ALOHCMUTE.entity.Posts;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.MessageModel;
 import com.ALOHCMUTE.model.UserModel;
+import com.ALOHCMUTE.service.ILikesService;
 import com.ALOHCMUTE.service.IMessageService;
 import com.ALOHCMUTE.service.IPostsService;
 import com.ALOHCMUTE.service.IUsersService;
@@ -36,7 +37,8 @@ public class UserController {
 	@Autowired
 	IPostsService postService;
 	
-	
+	@Autowired
+    ILikesService likesService;
 
 	@GetMapping("/profile/userId={userId}")
 	public ModelAndView getPostByUserId(@PathVariable int userId, ModelMap model) {
@@ -58,6 +60,7 @@ public class UserController {
 	    model.addAttribute("base64Images", base64Images);
 	    model.addAttribute("user", userModel);
 	    model.addAttribute("userId", userId);  // Fix: Use the provided userId parameter
+	    model.addAttribute("likesService", likesService);
 	    return new ModelAndView("user", model);
 	}
 

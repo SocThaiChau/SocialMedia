@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ALOHCMUTE.entity.Profiles;
@@ -24,14 +25,22 @@ public class ProfileController {
 	private final UsersRepository userRepository;
 	@Autowired
 	IProfileService profileService;
-    @Autowired
-    public ProfileController(UsersRepository userRepository) {
+	@Autowired
+    public ProfileController(UsersRepository userRepository, IProfileService profileService) {
         this.userRepository = userRepository;
+        this.profileService = profileService;
     }
-    @RequestMapping("/profile")
-    public String showUserProfile(ModelMap model) {
-        List<Profiles> listProfile = profileService.findAll();
-        model.addAttribute("listProfile", listProfile);
-        return "profile";
+    @RequestMapping("/profile/{userId}")
+    public String showUserProfile(@PathVariable int userId, ModelMap model) {
+        Profiles userProfile = profileService.findByUserId(userId);
+        
+        if (userProfile != null) {
+            model.addAttribute("userProfile", userProfile);
+            return "profile"; // Return your profile view
+        } else {
+            // Handle case when no profile is found for the given userId
+            // You can redirect or display an error message
+            return "profile_not_found"; // Return a custom error view
+        }
     }
 }
