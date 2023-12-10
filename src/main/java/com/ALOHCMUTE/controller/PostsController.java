@@ -13,6 +13,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.ALOHCMUTE.service.impl.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,9 @@ public class PostsController {
 	IPostsService postsService;
     @Autowired
     ILikesService likesService;
+
+	@Autowired
+	private CommentService commentsService;
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
@@ -62,6 +66,9 @@ public class PostsController {
 		model.addAttribute("posts", listposts);
 		model.addAttribute("base64Images", base64Images);
         model.addAttribute("likesService", likesService);
+		// Thêm bình luận vào danh sách
+		List<Comments> comments = commentsService.findAll();
+		model.addAttribute("comments", comments);
         return "home";
 	}
 

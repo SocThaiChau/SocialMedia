@@ -99,7 +99,15 @@
 					  </div>
 					</div>
 				<c:forEach items="${comments}" var="comment" varStatus="loop">
-					<p class="ms-4 me-5">${comment.content}</p>
+                    <div class="status__userProfile d-flex m-2 pt-3 ps-3">
+                        <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
+                        <div>
+                            <h6 class="mb-1" style="font-size: 14px;">${comment.users.userName}</h6>
+                            <p class="mb-1" style="font-size: 12px;">${comment.createTime}</p>
+                            <p class="ms-4 me-5">${comment.content}</p>
+                            <p></p>
+                        </div>
+                    </div>
 				</c:forEach>
 				<!-- Form for adding new comments -->
 				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">

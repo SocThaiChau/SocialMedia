@@ -46,7 +46,7 @@ public class Posts implements Serializable {
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
     private List<Likes> likes;
 
-    @OneToMany(mappedBy = "comments", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "comments", cascade = CascadeType.ALL,  orphanRemoval = true)
     private List<Comments> comments;
 
 //	public int getPostId() {

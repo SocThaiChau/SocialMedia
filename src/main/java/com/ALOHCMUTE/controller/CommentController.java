@@ -98,7 +98,6 @@ public class CommentController {
         BeanUtils.copyProperties(commentModel, comment);
 
         commentsService.saveComment(comment);
-
      	return new ModelAndView("redirect:/home", model);
     }
 }
