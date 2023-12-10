@@ -28,31 +28,39 @@
         <div class="card chat-app">
 			<div id="plist" class="people-list">
 				<h4>Tin nhắn</h4>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fa fa-search"></i></span>
-					</div>
-					<input type="text" class="form-control" placeholder="Search...">
-				</div>
+				<!-- Search form -->
+                    <form action="/message/findUserName=${userName}" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="userName" value='${userName}' placeholder="Search...">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
 				<ul class="list-unstyled chat-list mt-2 mb-0">
 					<c:forEach var="user" items="${usersList}">
 						<li class="clearfix">
-							<a href="<c:url value='/message/receiverId=${user.userId}'/>">
-								<img src="/assets/avt-profile.png" alt="avatar">
-								<div class="about">
-									<div class="name">${user.userName}</div>
-									<div class="status">
-										<c:choose>
-                    						<c:when test="${user.status eq true}">
-                        						<i class="fa fa-circle online"></i> Online
-                    						</c:when>
-                    						<c:otherwise>
-                        						<i class="fa fa-circle offline"></i> Offline
-                    						</c:otherwise>
-                						</c:choose>
+							<c:if test="${user.userId ne userId }">
+								<a href="<c:url value='/message/receiverId=${user.userId}'/>">
+									<img src="/assets/avt-profile.png" alt="avatar">
+									<div class="about">
+										<div class="name">${user.userName}</div>
+										<div class="status">
+											<c:choose>
+                    							<c:when test="${user.status eq true}">
+                        							<i class="fa fa-circle online"></i> Online
+                    							</c:when>
+                    							<c:otherwise>
+                        							<i class="fa fa-circle offline"></i> Offline
+                    							</c:otherwise>
+                							</c:choose>
+										</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							</c:if>
 						</li>
 					</c:forEach>
 				</ul>
@@ -85,17 +93,15 @@
 					
 					<div class="col-lg-6 text-lg-end text-sm-start mt-lg-0 mt-sm-3">
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-phone"></i></a>
-						<a href="javascript:void(0);" class="btn btn-outline-secondary"><i
-						class="fa fa-camera"></i></a> <a href="javascript:void(0);"
-						class="btn btn-outline-primary" id="imageButton"><i class="fa fa-image"></i></a>
+						<a href="javascript:void(0);" class="btn btn-outline-primary" id="imageButton"><i class="fa fa-image"></i></a>
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i
 							class="fa fa-cogs"></i></a> <a href="javascript:void(0);"
 							class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
 						<div class="mb-3">
 							<input type="hidden" name="receiverId" value="${receiverId}">
-            		<input type="hidden" name="status" value="True">
-            		<%-- <input type="hidden" name="userId" value="${userId}"> --%> <!-- Khi nào có đăng nhập thì dùng cái này -->
-							<input type="file" class="form-control visually-hidden" id="imageInput" name="image" value="${message.content}" accept="image/png, image/jpeg">
+            				<input type="hidden" name="status" value="True">
+            				<input type="hidden" name="users.userId" value="${userId}">
+							<input type="file" class="form-control visually-hidden" id="imageInput" name="image" value="${message.image}" accept="image/*">
 						</div>
 					</div>
 				</div>
@@ -105,7 +111,7 @@
 				<ul class="m-b-0">
 					<c:forEach var="message" items="${receiverMessage}">
             			<c:choose>
-                			<c:when test="${receiverId ne message.users.userId}">
+                			<c:when test="${receiverId ne userId && userId eq message.users.userId}">
                     			<li class="clearfix">
                         			<div class="message-data text-lg-end text-sm-start mt-lg-0 mt-sm-3">
                             			<span class="message-data-time">${message.createTime}</span>
@@ -133,7 +139,7 @@
             	<div class="input-group mb-0">
             		<input type="hidden" name="receiverId" value="${receiverId}">
             		<input type="hidden" name="status" value="True">
-            		<%-- <input type="hidden" name="userId" value="${userId}"> --%> <!-- Khi nào có đăng nhập thì dùng cái này -->
+            		<input type="hidden" name="users.userId" value="${userId}">
                 	<input type="text" class="form-control" name="content" value="${message.content}" placeholder="Enter text here..."></input>
                 	<div class="input-group-append">
                     	<button type="submit" class="btn btn-outline-secondary" type="button">

@@ -12,7 +12,7 @@ public interface IMessageService {
 
 	List<Messages> findAll();
 
-	List<Messages> findUserById(int receiverId);
+	List<Messages> findUserById(int receiverId, int userId);
 
 	void save(Messages entity);
 }

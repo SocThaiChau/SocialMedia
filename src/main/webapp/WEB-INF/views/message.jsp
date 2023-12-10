@@ -43,22 +43,24 @@
 				<ul class="list-unstyled chat-list mt-2 mb-0">
 					<c:forEach var="user" items="${usersList}">
 						<li class="clearfix">
-							<a href="<c:url value='/message/receiverId=${user.userId}'/>">
-								<img src="/assets/avt-profile.png" alt="avatar">
-								<div class="about">
-									<div class="name">${user.userName}</div>
-									<div class="status">
-										<c:choose>
-                    						<c:when test="${user.status eq true}">
-                        						<i class="fa fa-circle online"></i> Online
-                    						</c:when>
-                    						<c:otherwise>
-                        						<i class="fa fa-circle offline"></i> Offline
-                    						</c:otherwise>
-                						</c:choose>
+							<c:if test="${user.userId ne userId }">
+								<a href="<c:url value='/message/receiverId=${user.userId}'/>">
+									<img src="/assets/avt-profile.png" alt="avatar">
+									<div class="about">
+										<div class="name">${user.userName}</div>
+										<div class="status">
+											<c:choose>
+                    							<c:when test="${user.status eq true}">
+                        							<i class="fa fa-circle online"></i> Online
+                    							</c:when>
+                    							<c:otherwise>
+                        							<i class="fa fa-circle offline"></i> Offline
+                    							</c:otherwise>
+                							</c:choose>
+										</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							</c:if>
 						</li>
 					</c:forEach>
 				</ul>

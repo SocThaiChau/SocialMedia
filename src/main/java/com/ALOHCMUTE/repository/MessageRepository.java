@@ -13,6 +13,6 @@ import com.ALOHCMUTE.entity.Users;
 @Repository
 public interface MessageRepository extends JpaRepository<Messages, Integer>{
 	
-	@Query("SELECT m FROM Messages m WHERE :receiverId = m.receiverId OR :receiverId = m.users")
-	List<Messages> findUserById(@Param("receiverId") int receiverId);
+	@Query("SELECT m FROM Messages m WHERE (:receiverId = m.receiverId AND :userId = m.users.userId) OR (:userId = m.receiverId AND :receiverId = m.users.userId)")
+	List<Messages> findUserById(@Param("receiverId") int receiverId, @Param("userId") int userId);
 }

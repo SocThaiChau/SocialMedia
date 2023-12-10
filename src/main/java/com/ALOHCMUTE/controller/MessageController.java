@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -44,14 +45,30 @@ public class MessageController {
 	    return "message";
 	}
 	
+	@GetMapping
+    public String getReceivers(@RequestParam("userId") int userId, ModelMap model, HttpSession session) {
+        List<Users> usersList = userService.findAll();
+        model.addAttribute("usersList", usersList);
+
+        // Store userId in the session
+        session.setAttribute("userId", userId);
+
+        return "message";
+    }
+	
 	@GetMapping("/message/receiverId={receiverId}")
-    public ModelAndView getMessageByReceiverId(@PathVariable int receiverId, ModelMap model) {
+    public ModelAndView getMessageByReceiverId(@PathVariable int receiverId, ModelMap model,
+    											HttpSession session) {
 		MessageModel messageModel = new MessageModel();
-        List<Messages> receiverMessage = messageService.findUserById(receiverId);
+		// Retrieve userId from the session
+        int userId = (int) session.getAttribute("userId");
+		
+		List<Messages> receiverMessage = messageService.findUserById(receiverId, userId);
         Users receiver = userService.findUserById(receiverId);
         List<Users> usersList = userService.findAll();
         
         model.addAttribute("message", messageModel);
+        model.addAttribute("userId", userId);
         model.addAttribute("receiverId", receiverId);
 		model.addAttribute("usersList", usersList);
 		model.addAttribute("receiver", receiver);
@@ -59,6 +76,7 @@ public class MessageController {
         return new ModelAndView("chatWithReceiver",model);
     }
 	
+	// Tìm kiếm user
 	@PostMapping("/message/findUserName={userName}")
     public ModelAndView getUsers(@RequestParam("userName") String userName, ModelMap model) {
         List<Users> usersList = userService.findUserByUserName(userName);
@@ -69,7 +87,7 @@ public class MessageController {
 	
 	@PostMapping("/sendMessage")
 	public ModelAndView sendMessage(ModelMap model, 
-			@Valid @ModelAttribute("posts") MessageModel messageModel,
+			@Valid @ModelAttribute("messages") MessageModel messageModel,
 			BindingResult result) {
 		
 		if(result.hasErrors()) {

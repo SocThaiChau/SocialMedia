@@ -28,6 +28,9 @@
             </div>
         </form>
     </div>
+    
+    <a href="/message" style="color: white; font-size: 20px; cursor: pointer; text-decoration: none;" class="ms-3 me-4">
+            <i class="fa fa-comments"></i></a>
 
     <div class="collapse navbar-collapse me-4" id="mynavbar">
 

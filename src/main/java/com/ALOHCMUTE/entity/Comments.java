@@ -28,8 +28,9 @@ public class Comments implements Serializable {
     @Column(name = "CreateTime")
     private Date createTime;
     
-    @Column(name = "Image", columnDefinition = "nvarchar(200)")
-    private String image;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
     
     @Column(name = "CommentReplyId")
     private int commentReplyId;
@@ -40,5 +41,7 @@ public class Comments implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "postId")
+    private Posts posts;
+    
     private Comments comments;
 }
