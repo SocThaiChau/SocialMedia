@@ -33,6 +33,7 @@ import com.ALOHCMUTE.model.PostsModel;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.service.ILikesService;
 import com.ALOHCMUTE.service.IPostsService;
+import com.ALOHCMUTE.service.IUserService;
 
 
 
@@ -42,9 +43,12 @@ public class PostsController {
 	IPostsService postsService;
     @Autowired
     ILikesService likesService;
+    @Autowired
+	IUserService userService;
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
+		List<Users> usersList = userService.findAll();
 		// Sắp xếp listposts theo postId từ lớn đến bé
 
         listposts.sort(Comparator.comparingInt(Posts::getPostId).reversed());
@@ -59,6 +63,7 @@ public class PostsController {
                 base64Images.add(null); // hoặc có thể là một giá trị mặc định khác
             }
         }
+        model.addAttribute("usersList", usersList);
 		model.addAttribute("posts", listposts);
 		model.addAttribute("base64Images", base64Images);
         model.addAttribute("likesService", likesService);
