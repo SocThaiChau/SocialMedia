@@ -67,7 +67,10 @@
                 <hr class="ms-4 me-5">
                 <div class="activity-icon ms-3 pb-3" style="display: flex;  justify-content: space-between;">
                 	<div >
-                        <i style="cursor: pointer;" class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
+                        <a href="#" class="btn btn-link" onclick="likePost(${post.postId})">
+                            <i id="likeIcon_${post.postId}" class="${likesService.isLikedByUser(userId, post.postId) ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up'} ps-3 pe-3"></i>
+                            <span id="likeCount_${post.postId}">${likesService.getTotalLikesByPostId(post.postId)}</span>
+                        </a>
                         <a href="/comments/${post.postId}" class="btn btn-link"><i class="fa-regular fa-comment ps-3 pe-3"> 50 </i></a>
                     </div>
                     <div class="me-4">
@@ -207,6 +210,48 @@
 
     </div>
 </div>
-<script src="function.js"></script>
+<!-- Add this script section to your HTML file -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+//Hàm kiểm tra trạng thái của like
+
+function likePost(postId) {
+    console.log('Like button clicked for post ID: ' + postId);
+
+    // Get the initial total likes
+    var initialLikes = parseInt($('#likeCount_' + postId).text());
+
+    $.ajax({
+        type: 'GET',
+        url: '/like-post?postId=' + postId,
+        success: function (data) {
+            console.log('Success! Updated like count:', data);
+
+            // Update the like count in the UI
+            $('#likeCount_' + postId).text(data);
+
+            // Check if the user has liked the post
+            if (data > initialLikes) {
+                // Change the like icon to the liked state
+                $('#likeIcon_' + postId).removeClass('fa-regular fa-thumbs-up').addClass('fa-solid fa-thumbs-up');
+            } else {
+                // Change the like icon to the unliked state
+                $('#likeIcon_' + postId).removeClass('fa-solid fa-thumbs-up').addClass('fa-regular fa-thumbs-up');
+            }
+        },
+        error: function () {
+            console.error('Failed to like the post.');
+        }
+    });
+
+    // Prevent the default event of the link
+    event.preventDefault();
+}
+
+
+
+</script>
+
+
 </body>
 </html>

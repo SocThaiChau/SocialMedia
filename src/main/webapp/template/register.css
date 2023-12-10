@@ -10,7 +10,7 @@
 
 /* Login */
 .login{
-    height: 50vw;
+    height: 50vw !important;
 }
 
 .login__img{
@@ -29,5 +29,5 @@
 .login__form{
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
-    height: 390px !important;
+    height: 530px !important;
 }

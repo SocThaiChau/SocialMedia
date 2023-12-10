@@ -23,7 +23,7 @@
 <body>
 <%@include file="/common/admin/header.jsp" %>
 
-<div class="row" style="margin-top: 100px;"> <!-- Thêm margin-top vào dòng này -->
+<div class="row"> <!-- Thêm margin-top vào dòng này -->
         <div class="col-12">
             <sitemesh:write property='body'></sitemesh:write>
         </div>

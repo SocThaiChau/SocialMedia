@@ -26,9 +26,9 @@ public class HomeController {
 //		return "home";
 //	}
 
-	@RequestMapping(value="/index")
+	@RequestMapping(value="/login")
 	public String trangindex() {
-		return "index";
+		return "login";
 	}
 	
 }
