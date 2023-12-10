@@ -14,4 +14,5 @@ public interface ICommentService {
 	Page<Comments> findAll(Pageable pageable);
 
 	List<Comments> findAll(Sort sort);
+	int getTotalCommentByPostId(int postId);
 }

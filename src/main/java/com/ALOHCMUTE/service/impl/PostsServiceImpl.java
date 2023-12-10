@@ -72,5 +72,8 @@ public class PostsServiceImpl implements IPostsService{
 		postsRepository.deleteAll();
 	}
 
-	
+    @Override
+    public Posts getPostById(int postId) {
+        return postsRepository.findById(postId).orElse(null);
+    }
 }

@@ -31,4 +31,5 @@ public interface IPostsService {
 
 	<S extends Posts> S save(S entity);
 
+	Posts getPostById(int postId);
 }

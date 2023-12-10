@@ -10,8 +10,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.ALOHCMUTE.entity.Comments;
+import com.ALOHCMUTE.service.ICommentService;
+import com.ALOHCMUTE.service.impl.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,10 +30,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.entity.Posts;
+import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.PostsModel;
+import com.ALOHCMUTE.entity.Users;
+import com.ALOHCMUTE.service.ILikesService;
 import com.ALOHCMUTE.service.IPostsService;
+import com.ALOHCMUTE.service.IUserService;
 
 
 
@@ -37,13 +44,24 @@ import com.ALOHCMUTE.service.IPostsService;
 public class PostsController {
 	@Autowired
 	IPostsService postsService;
-	
+    @Autowired
+    ILikesService likesService;
+
+	@Autowired
+	private CommentService commentsService;
+	@Autowired
+	ICommentService commentService;
+    @Autowired
+	IUserService userService;
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
+		List<Users> usersList = userService.findAll();
 		// Sắp xếp listposts theo postId từ lớn đến bé
-	    listposts.sort(Comparator.comparingInt(Posts::getPostId).reversed());
-		List<String> base64Images = new ArrayList<>();
+
+        listposts.sort(Comparator.comparingInt(Posts::getPostId).reversed());
+        List<Integer> totalLikes = new ArrayList<>();
+        List<String> base64Images = new ArrayList<>();
         for (Posts post : listposts) {
             byte[] imageData = post.getImageData();
             if (imageData != null && imageData.length > 0) {
@@ -53,34 +71,57 @@ public class PostsController {
                 base64Images.add(null); // hoặc có thể là một giá trị mặc định khác
             }
         }
-		model.addAttribute("posts", listposts);	
+        model.addAttribute("usersList", usersList);
+		model.addAttribute("posts", listposts);
 		model.addAttribute("base64Images", base64Images);
+        model.addAttribute("likesService", likesService);
+		model.addAttribute("commentService",commentService);
+		// Thêm bình luận vào danh sách
+		List<Comments> listComments = commentsService.findAll();
+		listComments.sort(Comparator.comparingInt(Comments::getCommentId).reversed());
+
+		List<String> base64Images2 = new ArrayList<>();
+		for (Comments comment : listComments) {
+			byte[] imageData = comment.getImage();
+			if (imageData != null && imageData.length > 0) {
+				String base64Image = Base64.getEncoder().encodeToString(imageData);
+				base64Images2.add(base64Image);
+			} else {
+				base64Images2.add(null);
+			}
+		}
+
+		model.addAttribute("comments", listComments);
+		model.addAttribute("base64Images2", base64Images2);
 		return "home";
 	}
-	
+
 	@GetMapping("add")
 	public String Add(ModelMap model) {
 		PostsModel postsModel = new PostsModel();
 		postsModel.setEdit(false);
 		model.addAttribute("post", postsModel);
 		return "AddOrEdit";
-		
+
 	}
+
+
 	@PostMapping("/SaveOrUpdate")
-	public ModelAndView SaveOrUpdate(ModelMap model, 
+	public ModelAndView SaveOrUpdate(ModelMap model,
 			@Valid @ModelAttribute("posts") PostsModel postsModel,
 			@RequestParam("imageData") MultipartFile file,
-			BindingResult result) {
-		
+			BindingResult result,
+            HttpSession session) {
+
 		if(result.hasErrors()) {
 			return new ModelAndView("AddOrEdit");
 		}
 		Posts entity = new Posts();
 		long currentTimestamp = System.currentTimeMillis();
-		Date currentDate = new Date(currentTimestamp);        
+		Date currentDate = new Date(currentTimestamp);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 		String formattedDate = dateFormat.format(currentDate);
-		
+
 		if (file != null && !file.isEmpty()) {
 	        try (InputStream is = file.getInputStream()) {
 	            byte[] imageBytes = is.readAllBytes();
@@ -92,11 +133,24 @@ public class PostsController {
 	    }
 		//copy từ Model sang entity
 		BeanUtils.copyProperties(postsModel, entity);
-		// Lưu thông tin thời gian
+
+        int userId = (int) session.getAttribute("userId");
+        Users user = new Users();
+        user.setUserId(userId);
+
+        // Set the user information in the entity
+        entity.setUsers(user);
+        // Lưu thông tin thời gian
 		entity.setPostTime(formattedDate);
-		postsService.save(entity);
+        // Ensure that 'users' is not null
+        if (entity.getUsers() == null) {
+            // You may want to handle this case appropriately, perhaps by redirecting to an error page
+            return new ModelAndView("redirect:/error");
+        }
+
+        postsService.save(entity);
 		return new ModelAndView("redirect:/home" ,model);
-		
+
 	}
 	@GetMapping("/edit/{postId}")
 	public ModelAndView edit(ModelMap model,

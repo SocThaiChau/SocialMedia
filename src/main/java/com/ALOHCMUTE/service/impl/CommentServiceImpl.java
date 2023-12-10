@@ -31,4 +31,10 @@ public class CommentServiceImpl implements ICommentService{
 	public List<Comments> findAll(Sort sort) {
 		return commentRepository.findAll(sort);
 	}
+
+	@Override
+	public int getTotalCommentByPostId(int postId) {
+		// TODO Auto-generated method stub
+		return commentRepository.countByPosts_PostId(postId);
+	}
 }

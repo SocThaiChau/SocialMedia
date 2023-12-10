@@ -11,5 +11,5 @@ import com.ALOHCMUTE.entity.Posts;
 @Repository
 public interface CommentRepository extends JpaRepository<Comments, Integer>{
 	List<Comments> findById(int commentId);
-	List<Comments> findByParentComment(Comments parentComment);
+	int countByPosts_PostId(int postId);
 }

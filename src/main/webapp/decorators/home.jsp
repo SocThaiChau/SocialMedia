@@ -23,11 +23,11 @@
 <body>
 <%@include file="/common/admin/header.jsp" %>
 
-<div class="row">
-    <div class="col-12">
-        <sitemesh:write property='body'></sitemesh:write>
+<div class="row"> <!-- Thêm margin-top vào dòng này -->
+        <div class="col-12">
+            <sitemesh:write property='body'></sitemesh:write>
+        </div>
     </div>
-</div>
-<script src="function.js"></script>
+    <script src="function.js"></script>
 </body>
 </html>

@@ -10,8 +10,10 @@
                     <a style="color: white" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a style="color: white" class="nav-link" href="#">Trang cá nhân</a>
-                </li>
+				    <a style="color: white" class="nav-link" href="/profile">Trang cá nhân</a>
+				</li>
+
+
             </ul>
         </div>
         <form action="/action_page.php" style="width: 250px">
@@ -26,21 +28,25 @@
             </div>
         </form>
     </div>
+    
+    <a href="/message" style="color: white; font-size: 20px; cursor: pointer; text-decoration: none;" class="ms-3 me-4">
+            <i class="fa fa-comments"></i></a>
 
     <div class="collapse navbar-collapse me-4" id="mynavbar">
 
         <div class="dropdown ">
-            <img src="assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
+            <img src="/assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="mb-2">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/profile">
                         <i class="fa-solid fa-user me-1"></i>
                         Trang cá nhân
                     </a>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li class="mb-2">
-                    <a class="dropdown-item" href="/">
+                    <a class="dropdown-item" href="/logout">
+                    <a class="dropdown-item" href="/login">
                         <i class="fa-solid fa-right-from-bracket me-1"></i>
                         Log out
                     </a>
@@ -49,42 +55,3 @@
         </div>
     </div>
 </nav>
-<%--<nav class="navbar navbar-expand-md navbar-dark bg-dark">--%>
-<%--    <div class="container">--%>
-<%--        <a class="navbar-brand" href="index.html">Simple Ecommerce</a>--%>
-<%--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">--%>
-<%--            <span class="navbar-toggler-icon"></span>--%>
-<%--        </button>--%>
-<%--        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">--%>
-<%--            <ul class="navbar-nav m-auto">--%>
-<%--                <li class="nav-item active">--%>
-<%--                    <a class="nav-link" href="<c:url value = '/login'/>">Home <span class="sr-only">(current)</span></a>--%>
-<%--                </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link" href="<c:url value = '/logout'/>">Logout</a>--%>
-<%--                </li>               --%>
-<%--            </ul>--%>
-<%--            <form class="form-inline my-2 my-lg-0">--%>
-<%--                <div class="input-group input-group-sm">--%>
-<%--                    <input type="text" class="form-control" placeholder="Search...">--%>
-<%--                    <div class="input-group-append">--%>
-<%--                        <button type="button" class="btn btn-secondary btn-number">--%>
-<%--                            <i class="fa fa-search"></i>--%>
-<%--                        </button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <a class="btn btn-success btn-sm ml-3" href="cart.html">--%>
-<%--                    <i class="fa fa-shopping-cart"></i> Cart--%>
-<%--                    <span class="badge badge-light">3</span>--%>
-<%--                </a>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</nav>--%>
-
-<%--<section class="jumbotron text-center">--%>
-<%--    <div class="container">--%>
-<%--        <h1 class="jumbotron-heading">E-COMMERCE BOOTSTRAP THEME</h1>--%>
-<%--        <p class="lead text-muted mb-0">Simple theme for e-commerce build with Bootstrap 4.0.0. Pages available : home, category, product, cart  contact</p>--%>
-<%--    </div>--%>
-<%--</section>--%>

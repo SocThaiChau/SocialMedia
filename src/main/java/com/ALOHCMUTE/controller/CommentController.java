@@ -7,18 +7,17 @@ import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.ALOHCMUTE.entity.Users;
+import com.ALOHCMUTE.service.ICommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,7 +32,8 @@ import com.ALOHCMUTE.service.impl.PostService;
 public class CommentController {
 	@Autowired
     private CommentService commentsService;
-	
+	@Autowired
+	ICommentService commentService;
 	@Autowired
     private PostService postService;
 	
@@ -81,7 +81,8 @@ public class CommentController {
 	
     @PostMapping("/save-comment")
     public ModelAndView addComment(ModelMap model, @Valid @ModelAttribute("comments") CommentModel commentModel,
-    								@RequestParam("image") MultipartFile imageFile){
+    								@RequestParam("image") MultipartFile imageFile,  BindingResult result,
+								   HttpSession session){
     	Comments comment = new Comments();
     	
     	Posts post = postService.getPostById(commentModel.getPostId());
@@ -96,9 +97,21 @@ public class CommentController {
         }
     	comment.setPosts(post);
         BeanUtils.copyProperties(commentModel, comment);
+		int userId = (int) session.getAttribute("userId");
+		Users user = new Users();
+		user.setUserId(userId);
+
+		// Set the user information in the entity
+		comment.setUsers(user);
+		comment.setPosts(post);
 
         commentsService.saveComment(comment);
-
      	return new ModelAndView("redirect:/home", model);
     }
+
+	@GetMapping("get-comment-count")
+	@ResponseBody
+	public int commentPost(@RequestParam("postId") int postId) {
+		return commentService.getTotalCommentByPostId(postId);
+	}
 }
