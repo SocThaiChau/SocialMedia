@@ -21,5 +21,6 @@ public class CommentModel {
 	private MultipartFile image = null;
 	private int commentReplyId;
 	private int postId;
+	private Users users;
 
 }

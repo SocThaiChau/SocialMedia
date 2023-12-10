@@ -13,6 +13,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.ALOHCMUTE.service.ICommentService;
 import com.ALOHCMUTE.service.impl.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,8 @@ public class PostsController {
 
 	@Autowired
 	private CommentService commentsService;
+	@Autowired
+	ICommentService commentService;
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
@@ -66,10 +69,25 @@ public class PostsController {
 		model.addAttribute("posts", listposts);
 		model.addAttribute("base64Images", base64Images);
         model.addAttribute("likesService", likesService);
+		model.addAttribute("commentService",commentService);
 		// Thêm bình luận vào danh sách
-		List<Comments> comments = commentsService.findAll();
-		model.addAttribute("comments", comments);
-        return "home";
+		List<Comments> listComments = commentsService.findAll();
+		listComments.sort(Comparator.comparingInt(Comments::getCommentId).reversed());
+
+		List<String> base64Images2 = new ArrayList<>();
+		for (Comments comment : listComments) {
+			byte[] imageData = comment.getImage();
+			if (imageData != null && imageData.length > 0) {
+				String base64Image = Base64.getEncoder().encodeToString(imageData);
+				base64Images2.add(base64Image);
+			} else {
+				base64Images2.add(null);
+			}
+		}
+
+		model.addAttribute("comments", listComments);
+		model.addAttribute("base64Images2", base64Images2);
+		return "home";
 	}
 
 	@GetMapping("add")

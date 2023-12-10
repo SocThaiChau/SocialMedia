@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse me-4" id="mynavbar">
 
         <div class="dropdown ">
-            <img src="assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
+            <img src="/assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="mb-2">
                     <a class="dropdown-item" href="/profile">

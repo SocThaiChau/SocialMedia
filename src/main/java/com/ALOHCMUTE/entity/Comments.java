@@ -47,12 +47,12 @@ public class Comments implements Serializable {
     @ManyToOne
     @JoinColumn(name = "postId")
     private Posts posts;
-
-	@OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Comments> comments;
-
-	@ManyToOne
-	@JoinColumn(name = "CommentReplyId")
-	private Comments parentComment;
+//
+//	@OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Comments> comments;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "CommentReplyId")
+//	private Comments parentComment;
 
 }
