@@ -28,12 +28,18 @@
         <div class="card chat-app">
 			<div id="plist" class="people-list">
 				<h4>Tin nhắn</h4>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fa fa-search"></i></span>
-					</div>
-					<input type="text" class="form-control" placeholder="Search...">
-				</div>
+					<!-- Search form -->
+                    <form action="/message/findUserName=${userName}" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="userName" value='${userName}' placeholder="Search...">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
 				<ul class="list-unstyled chat-list mt-2 mb-0">
 					<c:forEach var="user" items="${usersList}">
 						<li class="clearfix">

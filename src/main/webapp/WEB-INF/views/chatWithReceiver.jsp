@@ -63,6 +63,7 @@
     <!-- content-area -->
     <div class="content-area col-9 bg-white">
         <div class="chat d-flex flex-column h-100">
+        	<form action="/sendMessage" method="POST">
 			<div class="chat-header clearfix">
 				<div class="row">
 					<div class="col-lg-6" style="display: flex; align-items: center;">
@@ -81,18 +82,25 @@
                 			</c:choose>
     					</div>
 					</div>
-
+					
 					<div class="col-lg-6 text-lg-end text-sm-start mt-lg-0 mt-sm-3">
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-phone"></i></a>
 						<a href="javascript:void(0);" class="btn btn-outline-secondary"><i
 						class="fa fa-camera"></i></a> <a href="javascript:void(0);"
-						class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+						class="btn btn-outline-primary" id="imageButton"><i class="fa fa-image"></i></a>
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i
 							class="fa fa-cogs"></i></a> <a href="javascript:void(0);"
 							class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+						<div class="mb-3">
+							<input type="hidden" name="receiverId" value="${receiverId}">
+            		<input type="hidden" name="status" value="True">
+            		<%-- <input type="hidden" name="userId" value="${userId}"> --%> <!-- Khi nào có đăng nhập thì dùng cái này -->
+							<input type="file" class="form-control visually-hidden" id="imageInput" name="image" value="${message.content}" accept="image/png, image/jpeg">
+						</div>
 					</div>
 				</div>
 			</div>
+			</form>
 			<div class="chat-history">
 				<ul class="m-b-0">
 					<c:forEach var="message" items="${receiverMessage}">
@@ -140,6 +148,21 @@
     
 </div>
 <script src="function.js"></script>
+<script>
+  document.getElementById('imageButton').addEventListener('click', function() {
+    // Trigger click on the hidden file input when the button is clicked
+    document.getElementById('imageInput').click();
+  });
+
+  // Add an event listener to handle file selection
+  document.getElementById('imageInput').addEventListener('change', function() {
+    // Handle the selected file (you can access it using this.files[0])
+    var selectedImage = this.files[0];
+
+    // Add your code to process the selected image here
+    console.log('Selected Image:', selectedImage);
+  });
+</script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>

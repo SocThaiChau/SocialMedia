@@ -59,6 +59,14 @@ public class MessageController {
         return new ModelAndView("chatWithReceiver",model);
     }
 	
+	@PostMapping("/message/findUserName={userName}")
+    public ModelAndView getUsers(@RequestParam("userName") String userName, ModelMap model) {
+        List<Users> usersList = userService.findUserByUserName(userName);
+        
+        model.addAttribute("usersList", usersList);
+        return new ModelAndView("message",model);
+    }
+	
 	@PostMapping("/sendMessage")
 	public ModelAndView sendMessage(ModelMap model, 
 			@Valid @ModelAttribute("posts") MessageModel messageModel,

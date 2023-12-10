@@ -10,4 +10,5 @@ public interface IUserService {
 
 	Users findUserById(int receiverId);
 
+	List<Users> findUserByUserName(String userName);
 }
