@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.ALOHCMUTE.entity.Profiles;
 @Repository
 public interface ProfileRepository extends JpaRepository<Profiles, Integer>  {
-
+	Profiles findByUsersUserId(int userId);
 }

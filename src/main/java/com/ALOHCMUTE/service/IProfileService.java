@@ -16,4 +16,5 @@ public interface IProfileService {
 	Page<Profiles> findAll(Pageable pageable);
 	
     List<Profiles> findAll();
+    Profiles findByUserId(int userId);
 }

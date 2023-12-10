@@ -37,7 +37,7 @@
             <img src="assets/avt-profile.png" alt="avatar" class="avatar-profile dropdown-toggle" data-bs-toggle="dropdown" >
             <ul class="dropdown-menu dropdown-menu-end">
                 <li class="mb-2">
-                    <a class="dropdown-item" href="/profile">
+                    <a class="dropdown-item" href="/profile/*">
                         <i class="fa-solid fa-user me-1"></i>
                         Trang cá nhân
                     </a>

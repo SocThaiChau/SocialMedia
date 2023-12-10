@@ -33,22 +33,22 @@
 </head>
 <body>
 <div class="container">
-	<c:forEach items="${listProfile}" var="profiles">
+<c:if test="${not empty userProfile}">
 		<div class="main-body">
 			<div class="col-md-12 mb-5">
 				<div class="card-body">
 					<div class="d-flex flex-column align-items-center text-center">
 						<img
-								src="${profiles.background}"
+								src="${userProfile.background}"
 								alt="Background" class="img-fluid"
 								style="width: 1400px; height: 300px; border-radius: 10px;">
 						<img
-								src="${profiles.avatar}"
+								src="${userProfile.avatar}"
 								alt="Avatar" class="rounded-circle" width="150"
 								style="position: absolute; top: 50%; left: 50%; transform: translate(-320%, 50%); z-index: 1;">
 						<div class="mt-3 mb-5" style="position: absolute; top: 75%; left: 300px; transform: translateY(-50%); text-align: left; color: black;">
-						    <h4 style="margin-bottom: 2px;">${profiles.profileId}</h4>
-						    <p style="margin-bottom: 5px;">${profiles.profileId}</p>
+						    <h4 style="margin-bottom: 2px;">${userProfile.users.userName}</h4>
+						    <p style="margin-bottom: 5px;">${userProfile.users.address}</p>
 						    <button class="btn btn-primary">Follow</button>
 						    <button class="btn btn-outline-primary">Message</button>
 						</div>
@@ -63,7 +63,7 @@
 								<div class="col-sm-3">
 									<h6 class="mb-0">Full Name</h6>
 								</div>
-								<div class="col-sm-9 text-secondary">${profiles.users.userName}
+								<div class="col-sm-9 text-secondary">${userProfile.users.userName}
 								</div>
 							</div>
 							<hr>
@@ -71,49 +71,41 @@
 								<div class="col-sm-3">
 									<h6 class="mb-0">Gender</h6>
 								</div>
-<div class="col-sm-9 text-secondary">${profiles.users.gender}</div>
+							<div class="col-sm-9 text-secondary">${userProfile.users.gender}</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Day Of Birthday</h6>
 								</div>
-								<div class="col-sm-9 text-secondary">${profiles.users.dob}</div>
+								<div class="col-sm-9 text-secondary">${userProfile.users.dob}</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Email</h6>
 								</div>
-								<div class="col-sm-9 text-secondary">${profiles.users.email}</div>
+								<div class="col-sm-9 text-secondary">${userProfile.users.email}</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Phone</h6>
 								</div>
-								<div class="col-sm-9 text-secondary">${profiles.users.phone}</div>
+								<div class="col-sm-9 text-secondary">${userProfile.users.phone}</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Address</h6>
 								</div>
-								<div class="col-sm-9 text-secondary">${profiles.users.address}</div>
-							</div>
-							<hr>
-							<div class="row">
-								<div class="col-sm-12">
-									<a class="btn btn-info " target="__blank">Chỉnh sửa thông
-										tin cá nhân</a>
-								</div>
-								<button onclick="showEditForm()">Chỉnh sửa thông tin cá nhân</button>
+								<div class="col-sm-9 text-secondary">${userProfile.users.address}</div>
 							</div>
 						</div>
 					</div>
 				</div>
 		</div>
-	</c:forEach>
+	</c:if>
 </div>
 </body>
 </html>

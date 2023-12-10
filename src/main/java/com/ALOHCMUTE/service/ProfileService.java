@@ -32,4 +32,8 @@ public class ProfileService implements IProfileService{
 	public Page<Profiles> findAll(Pageable pageable) {
 		return profileRepository.findAll(pageable);
 	}
+	@Override
+	public Profiles findByUserId(int userId) {
+		return profileRepository.findByUsersUserId(userId);
+	}
 }
