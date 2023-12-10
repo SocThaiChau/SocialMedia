@@ -45,23 +45,23 @@
                         <label class="label mb-2" for="Email">Email</label>
                         <input type="text" id="Email" name="email" class="form-control" placeholder="Email" required autofocus="autofocus">
                     </div>
-
+                      	
                     <div class="form-group mb-3">
                         <label class="label mb-2" for="Password">Password</label>
                         <input type="password" id="Password" name="password" class="form-control" placeholder="Password" required>
-                    </div>
-
-
+                    </div>                                  
+                	
+              
                     <div class="form-group">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3 mb-3 mt-2">Sign In</button>
                         <span>Your don't have an account? <a href="<%=request.getContextPath()%>/registration">Registration</a></span>
                     </div>
+                    
+                    
 
-
-
-
+                    
                 </form>
-
+                
             </div>
         </div>
     </div>

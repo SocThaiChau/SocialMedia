@@ -83,3 +83,7 @@ public class PostsServiceImpl implements IPostsService{
 
 	
 }
+
+	@Override
+    public Posts getPostById(int postId) {
+        return postsRepository.findById(postId).orElse(null);

@@ -284,3 +284,18 @@ public class Users implements Serializable {
         this.messages = messages;
     }
 }
+
+    public Users(String userName, String address, String email, String password, String phone, String gender, Date dob, Boolean status, Profiles profiles, List<Comments> comments, List<Posts> posts, List<Likes> likes, List<Messages> messages) {
+        this.userName = userName;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.dob = dob;
+        this.status = status;
+        this.profiles = profiles;
+        this.comments = comments;
+        this.posts = posts;
+        this.likes = likes;
+        this.messages = messages;

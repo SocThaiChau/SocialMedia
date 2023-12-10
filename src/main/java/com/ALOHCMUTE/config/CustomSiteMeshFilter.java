@@ -27,3 +27,5 @@ public class CustomSiteMeshFilter extends ConfigurableSiteMeshFilter{
 		.addExcludedPath("/api/**").addExcludedPath("/api/**");
 	}
 }
+
+		.addDecoratorPath("/registration", "/decorators/registration.jsp")

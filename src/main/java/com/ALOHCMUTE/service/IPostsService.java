@@ -1,3 +1,4 @@
+	Posts getPostById(int postId);
 package com.ALOHCMUTE.service;
 
 import java.util.List;

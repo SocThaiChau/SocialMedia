@@ -8,6 +8,8 @@
     <title>ALOHCMUTE</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
@@ -21,6 +23,8 @@
 </head>
 
 <body>
+
+
 <!-- content-area------------ -->
 <div class="row bg-light">
     <!-- leftSidebar -->
@@ -98,25 +102,9 @@
 					    </div>
 					  </div>
 					</div>
-				<c:forEach items="${comments}" var="comment" varStatus="loop">
-					<p class="ms-4 me-5">${comment.content}</p>
-				</c:forEach>
-				<!-- Form for adding new comments -->
-				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="postId" value="${post.postId}"></input>
-    				<div class="mb-3 position-relative">
-        				<textarea class="form-control" rows="3" id="writeComment" name="content" placeholder="Viết bình luận..."></textarea>
-        				<div class="d-flex justify-content-end align-items-end position-absolute bottom-0 end-0 p-2">
-            				<label style="cursor: pointer;" for="image" class="image-icon-label me-2"><i class="fas fa-image"></i></label>
-            				<button type="submit" class="btn btn-primary writeComment__btnComment ms-2"><i class="fas fa-paper-plane fa-xs"></i></button>
-        				</div>
-    				</div>
-    				<hr class="mb-3">
-    				<div class="mb-3"><input type="file" class="form-control visually-hidden" id="image" name="image" accept="image/png, image/jpeg"></div>
-				</form>
-
             </div>
         </c:forEach>
+
 
 
 
