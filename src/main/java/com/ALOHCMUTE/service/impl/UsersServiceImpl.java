@@ -55,23 +55,13 @@ public class UsersServiceImpl implements IUsersService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String creationDate = currentDate.format(formatter);
 
-        // Tạo một đối tượng User từ thông tin được truyền vào từ DTO
-        Users user = new Users(
-               
-                userDto.getUserName(), // Assuming that "Username" in UserDto corresponds to "userName" in Users
-                null, // Set address to null or provide a default value
-                userDto.getEmail(),
-                userDto.getPassword(), // Set the encoded password
-                null, // Set phone to null or provide a default value
-                null, // Set gender to null or provide a default value
-                null, // Set dob to null or provide a default value
-                true, // Set status to true or provide a default value
-                null, // Set profiles to null or provide a default value
-                null, // Set comments to null or provide a default value
-                null, // Set posts to null or provide a default value
-                null, // Set likes to null or provide a default value
-                null  // Set messages to null or provide a default value
-        );
+
+        Users user = new Users();
+        user.setUserName(userDto.getUserName());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setStatus(true);
+
 
         usersRepository.save(user);
 	}

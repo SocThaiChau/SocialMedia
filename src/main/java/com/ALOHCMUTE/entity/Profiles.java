@@ -9,6 +9,8 @@ import lombok.*;
 
 @Entity
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name ="Profiles")
@@ -28,38 +30,38 @@ public class Profiles implements Serializable {
     @OneToOne
     @JoinColumn(name = "userId")
     private Users users;
-
-	public int getProfileId() {
-		return profileId;
-	}
-
-	public void setProfileId(int profileId) {
-		this.profileId = profileId;
-	}
-
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}
-
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-
-	public String getBackground() {
-		return background;
-	}
-
-	public void setBackground(String background) {
-		this.background = background;
-	}
-	
-    
+//
+//	public int getProfileId() {
+//		return profileId;
+//	}
+//
+//	public void setProfileId(int profileId) {
+//		this.profileId = profileId;
+//	}
+//
+//	public Users getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(Users users) {
+//		this.users = users;
+//	}
+//
+//	public String getAvatar() {
+//		return avatar;
+//	}
+//
+//	public void setAvatar(String avatar) {
+//		this.avatar = avatar;
+//	}
+//
+//	public String getBackground() {
+//		return background;
+//	}
+//
+//	public void setBackground(String background) {
+//		this.background = background;
+//	}
+//
+//
 }
