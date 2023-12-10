@@ -13,6 +13,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.service.ICommentService;
 import com.ALOHCMUTE.service.impl.CommentService;
 import org.springframework.beans.BeanUtils;
@@ -29,12 +30,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.entity.Posts;
+import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.PostsModel;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.service.ILikesService;
 import com.ALOHCMUTE.service.IPostsService;
+import com.ALOHCMUTE.service.IUserService;
 
 
 
@@ -49,9 +51,12 @@ public class PostsController {
 	private CommentService commentsService;
 	@Autowired
 	ICommentService commentService;
+    @Autowired
+	IUserService userService;
 	@RequestMapping("home")
 	public String listposts(ModelMap model) {
 		List<Posts> listposts = postsService.findAll();
+		List<Users> usersList = userService.findAll();
 		// Sắp xếp listposts theo postId từ lớn đến bé
 
         listposts.sort(Comparator.comparingInt(Posts::getPostId).reversed());
@@ -66,6 +71,7 @@ public class PostsController {
                 base64Images.add(null); // hoặc có thể là một giá trị mặc định khác
             }
         }
+        model.addAttribute("usersList", usersList);
 		model.addAttribute("posts", listposts);
 		model.addAttribute("base64Images", base64Images);
         model.addAttribute("likesService", likesService);
@@ -98,6 +104,8 @@ public class PostsController {
 		return "AddOrEdit";
 
 	}
+
+
 	@PostMapping("/SaveOrUpdate")
 	public ModelAndView SaveOrUpdate(ModelMap model,
 			@Valid @ModelAttribute("posts") PostsModel postsModel,

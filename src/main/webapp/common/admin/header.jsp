@@ -28,6 +28,7 @@
             </div>
         </form>
     </div>
+    
     <a href="/message" style="color: white; font-size: 20px; cursor: pointer; text-decoration: none;" class="ms-3 me-4">
             <i class="fa fa-comments"></i></a>
 
@@ -44,6 +45,7 @@
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li class="mb-2">
+                    <a class="dropdown-item" href="/logout">
                     <a class="dropdown-item" href="/login">
                         <i class="fa-solid fa-right-from-bracket me-1"></i>
                         Log out
