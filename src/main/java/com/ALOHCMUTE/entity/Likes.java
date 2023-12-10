@@ -1,6 +1,8 @@
 package com.ALOHCMUTE.entity;
 
 import java.io.Serializable;
+import java.util.Optional;
+
 import javax.persistence.*;
 
 import lombok.*;
@@ -17,8 +19,6 @@ public class Likes implements Serializable {
     @Column(name = "LikeId")
     private int likeId;
     
-    @Column(name = "Status")
-    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "userId")

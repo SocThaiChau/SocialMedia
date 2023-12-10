@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="/template/home.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,41 +28,49 @@
         <div class="card chat-app">
 			<div id="plist" class="people-list">
 				<h4>Tin nhắn</h4>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fa fa-search"></i></span>
-					</div>
-					<input type="text" class="form-control" placeholder="Search...">
-				</div>
+					<!-- Search form -->
+                    <form action="/message/findUserName=${userName}" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="userName" value='${userName}' placeholder="Search...">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
 				<ul class="list-unstyled chat-list mt-2 mb-0">
 					<c:forEach var="user" items="${usersList}">
 						<li class="clearfix">
-							<a href="<c:url value='/message/receiverId=${user.userId}'/>">
-								<img src="/assets/avt-profile.png" alt="avatar">
-								<div class="about">
-									<div class="name">${user.userName}</div>
-									<div class="status">
-										<c:choose>
-                    						<c:when test="${user.status eq true}">
-                        						<i class="fa fa-circle online"></i> Online
-                    						</c:when>
-                    						<c:otherwise>
-                        						<i class="fa fa-circle offline"></i> Offline
-                    						</c:otherwise>
-                						</c:choose>
+							<c:if test="${user.userId ne userId }">
+								<a href="<c:url value='/message/receiverId=${user.userId}'/>">
+									<img src="/assets/avt-profile.png" alt="avatar">
+									<div class="about">
+										<div class="name">${user.userName}</div>
+										<div class="status">
+											<c:choose>
+                    							<c:when test="${user.status eq true}">
+                        							<i class="fa fa-circle online"></i> Online
+                    							</c:when>
+                    							<c:otherwise>
+                        							<i class="fa fa-circle offline"></i> Offline
+                    							</c:otherwise>
+                							</c:choose>
+										</div>
 									</div>
-								</div>
-							</a>
+								</a>
+							</c:if>
 						</li>
 					</c:forEach>
 				</ul>
 			</div>
     	</div>
     </div>
-    
+
     <!-- content-area -->
     <div class="content-area col-9 bg-white"></div>
-    
+
 </div>
 <script src="function.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

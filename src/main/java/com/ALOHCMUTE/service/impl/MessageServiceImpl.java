@@ -21,8 +21,8 @@ public class MessageServiceImpl implements IMessageService{
 	}
 
 	@Override
-	public List<Messages> findUserById(int receiverId) {
-		return messageRepository.findUserById(receiverId);
+	public List<Messages> findUserById(int receiverId, int userId) {
+		return messageRepository.findUserById(receiverId, userId);
 	}
 
 	@Override

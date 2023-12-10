@@ -25,4 +25,9 @@ public class UserServiceImpl implements IUserService{
 		return userRepository.findUserById(receiverId);
 	}
 
+	@Override
+	public List<Users> findUserByUserName(String userName) {
+		return userRepository.findUserByUserName(userName);
+	}
+
 }

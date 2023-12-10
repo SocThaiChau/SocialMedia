@@ -35,8 +35,9 @@ public class Messages implements Serializable {
     @Column(name = "Status")
     private Boolean status;
     
-    @Column(name = "MessageType", columnDefinition = "nvarchar(2000)")
-    private String messageType;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "userId")

@@ -8,6 +8,8 @@
     <title>ALOHCMUTE</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
@@ -21,10 +23,12 @@
 </head>
 
 <body>
+
+
 <!-- content-area------------ -->
 <div class="row bg-light">
     <!-- leftSidebar -->
-    <div class="leftSidebar col-3">
+    <div class="leftSidebar col-3 ">
         <div class="advertisement bg-white mt-3 ms-3">
             <div class="advertisement__title d-flex m-2 pt-3 ps-3">
                 <h6 class="mb-1" style="font-size: 14px;">Advertisement</h6>
@@ -45,7 +49,7 @@
     </div>
     <!-- content-area -->
     <div class="content-area col-6 bg-white">
-     
+
            <a href="/add" class="btn btn-primary justify-content-between" style="width:100%">Post</a>
 
         <c:forEach items="${posts}" var="post" varStatus="loop">
@@ -53,7 +57,7 @@
                 <div class="status__userProfile d-flex m-2 pt-3 ps-3">
                     <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
                     <div>
-                        <h6 class="mb-1" style="font-size: 14px;">${post.postId}</h6>
+                        <h6 class="mb-1" style="font-size: 14px;">${post.users.userName}</h6>
                         <p class="mb-1" style="font-size: 12px;">${post.privacyLevel == true ? 'Public': 'Private'}</p>
                         <p class="mb-1" style="font-size: 12px;">${post.postTime}</p>
                     </div>
@@ -67,7 +71,10 @@
                 <hr class="ms-4 me-5">
                 <div class="activity-icon ms-3 pb-3" style="display: flex;  justify-content: space-between;">
                 	<div >
-                        <i style="cursor: pointer;" class="fa-regular fa-thumbs-up ps-3 pe-3"> 50 </i>
+                        <a href="#" class="btn btn-link" onclick="likePost(${post.postId})">
+                            <i id="likeIcon_${post.postId}" class="${likesService.isLikedByUser(userId, post.postId) ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up'} ps-3 pe-3"></i>
+                            <span id="likeCount_${post.postId}">${likesService.getTotalLikesByPostId(post.postId)}</span>
+                        </a>
                         <a href="/comments/${post.postId}" class="btn btn-link"><i class="fa-regular fa-comment ps-3 pe-3"> 50 </i></a>
                     </div>
                     <div class="me-4">
@@ -79,135 +86,115 @@
 					<div class="modal" id="ModalDeletePost${post.postId}">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
-					
-					
+
+
 					      <!-- Modal body -->
 					      <div class="modal-body">
 					        Bạn có muốn xóa chứ ?
 					      </div>
-					
+
 					      <!-- Modal footer -->
 					      <div class="modal-footer">
 					     	<a href="/delete/${post.postId}" type="button" class="btn btn-danger">Delete</a>
 					        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
 					      </div>
-					
+
 					    </div>
 					  </div>
 					</div>
-				<c:forEach items="${comments}" var="comment" varStatus="loop">
-					<p class="ms-4 me-5">${comment.content}</p>
-				</c:forEach>
-				<!-- Form for adding new comments -->
-				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="postId" value="${post.postId}"></input>
-    				<div class="mb-3 position-relative">
-        				<textarea class="form-control" rows="3" id="writeComment" name="content" placeholder="Viết bình luận..."></textarea>
-        				<div class="d-flex justify-content-end align-items-end position-absolute bottom-0 end-0 p-2">
-            				<label style="cursor: pointer;" for="image" class="image-icon-label me-2"><i class="fas fa-image"></i></label>
-            				<button type="submit" class="btn btn-primary writeComment__btnComment ms-2"><i class="fas fa-paper-plane fa-xs"></i></button>
-        				</div>
-    				</div>
-    				<hr class="mb-3">
-    				<div class="mb-3"><input type="file" class="form-control visually-hidden" id="image" name="image" accept="image/png, image/jpeg"></div>
-				</form>
-
             </div>
         </c:forEach>
+
 
 
 
     </div>
     <!-- rightSidebar -->
     <div class="rightSidebar col-3 bg-light ps-3">
+    	<div id="plist" class="people-list">
         <p class="pt-2 m-2">Người liên Hệ</p>
-        <hr>
-
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-
-
+        <!-- Search form -->
+                    <form action="/message/findUserName=${userName}" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="userName" value='${userName}' placeholder="Search...">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+				<ul class="list-unstyled chat-list mt-2 mb-0">
+					<c:forEach var="user" items="${usersList}">
+						<li class="clearfix">
+							<c:if test="${user.userId ne userId }">
+								<a href="<c:url value='/message/receiverId=${user.userId}'/>">
+									<img src="/assets/avt-profile.png" alt="avatar">
+									<div class="about">
+										<div class="name">${user.userName}</div>
+										<div class="status">
+											<c:choose>
+                    							<c:when test="${user.status eq true}">
+                        							<i class="fa fa-circle online"></i> Online
+                    							</c:when>
+                    							<c:otherwise>
+                        							<i class="fa fa-circle offline"></i> Offline
+                    							</c:otherwise>
+                							</c:choose>
+										</div>
+									</div>
+								</a>
+							</c:if>
+						</li>
+					</c:forEach>
+				</ul>
+		</div>
     </div>
 </div>
-<script >
+<!-- Add this script section to your HTML file -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+//Hàm kiểm tra trạng thái của like
+
+function likePost(postId) {
+    console.log('Like button clicked for post ID: ' + postId);
+
+    // Get the initial total likes
+    var initialLikes = parseInt($('#likeCount_' + postId).text());
+
+    $.ajax({
+        type: 'GET',
+        url: '/like-post?postId=' + postId,
+        success: function (data) {
+            console.log('Success! Updated like count:', data);
+
+            // Update the like count in the UI
+            $('#likeCount_' + postId).text(data);
+
+            // Check if the user has liked the post
+            if (data > initialLikes) {
+                // Change the like icon to the liked state
+                $('#likeIcon_' + postId).removeClass('fa-regular fa-thumbs-up').addClass('fa-solid fa-thumbs-up');
+            } else {
+                // Change the like icon to the unliked state
+                $('#likeIcon_' + postId).removeClass('fa-solid fa-thumbs-up').addClass('fa-regular fa-thumbs-up');
+            }
+        },
+        error: function () {
+            console.error('Failed to like the post.');
+        }
+    });
+
+    // Prevent the default event of the link
+    event.preventDefault();
+}
+
+
+
 </script>
+
+
 </body>
 </html>

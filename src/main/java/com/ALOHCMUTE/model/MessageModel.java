@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ALOHCMUTE.entity.Users;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -21,8 +23,9 @@ public class MessageModel {
 	private Date createTime;
 	private int receiverId;
 	private Boolean status;
-	private String messageType;
+	private MultipartFile image = null;
 	private int userId;
+	private Users users;
 	public int getMessageId() {
 		return messageId;
 	}
@@ -53,16 +56,22 @@ public class MessageModel {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	public String getMessageType() {
-		return messageType;
+	public MultipartFile getImage() {
+		return image;
 	}
-	public void setMessageType(String messageType) {
-		this.messageType = messageType;
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 }
