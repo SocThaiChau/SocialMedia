@@ -11,7 +11,7 @@
 					class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item"><a style="color: white" class="nav-link"
-					href="/user/profile">Trang cá nhân</a></li>
+					href="<c:url value='/profile/userId=${user.userId}'/>">Trang cá nhân</a></li>
 			</ul>
 		</div>
 		<form method="post" action="/search" class="navbar__search me-3">

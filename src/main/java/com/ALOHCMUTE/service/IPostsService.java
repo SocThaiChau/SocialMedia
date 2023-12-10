@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import com.ALOHCMUTE.entity.Messages;
 import com.ALOHCMUTE.entity.Posts;
 
 public interface IPostsService {
@@ -28,6 +29,8 @@ public interface IPostsService {
 	Page<Posts> findAll(Pageable pageable);
 
 	List<Posts> findAll();
+	
+	List<Posts> findPostById(int userId);
 
 	<S extends Posts> S save(S entity);
 
