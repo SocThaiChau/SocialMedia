@@ -3,7 +3,7 @@
 	<%@ include file="/common/taglib.jsp"%>
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary ps-3 fixed-top">
     <div class="container-fluid d-flex justify-content-between ">
-        <a class="navbar-brand ms-3" href="/home">ALOHCMUTE</a>
+        <a class="navbar-brand ms-3" href="#">ALOHCMUTE</a>
         <div style="width: 500px"  id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item active">
@@ -28,8 +28,6 @@
             </div>
         </form>
     </div>
-    <a href="/message" style="color: white; font-size: 20px; cursor: pointer; text-decoration: none;" class="ms-3 me-4">
-            <i class="fa fa-comments"></i></a>
 
     <div class="collapse navbar-collapse me-4" id="mynavbar">
 
@@ -44,6 +42,7 @@
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li class="mb-2">
+                    <a class="dropdown-item" href="/logout">
                     <a class="dropdown-item" href="/login">
                         <i class="fa-solid fa-right-from-bracket me-1"></i>
                         Log out

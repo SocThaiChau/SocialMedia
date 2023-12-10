@@ -19,8 +19,6 @@ public class Likes implements Serializable {
     @Column(name = "LikeId")
     private int likeId;
     
-    @Column(name = "Status")
-    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "userId")
