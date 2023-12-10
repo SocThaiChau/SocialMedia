@@ -100,6 +100,8 @@ public class PostsController {
 	public String Add(ModelMap model) {
 		PostsModel postsModel = new PostsModel();
 		postsModel.setEdit(false);
+		List<Users> usersList = userService.findAll();
+		model.addAttribute("usersList", usersList);
 		model.addAttribute("post", postsModel);
 		return "AddOrEdit";
 

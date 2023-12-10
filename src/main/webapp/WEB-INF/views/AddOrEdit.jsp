@@ -70,98 +70,49 @@
             <button type="submit" class="btn btn-primary writePost__btnPost ms-3 me-3 mb-3 justify-content-between">Post</button>
           </form>
         </div>
-
-        
-
-
     </div>
     <!-- rightSidebar -->
     <div class="rightSidebar col-3 bg-light ps-3">
-        <p class="pt-2 m-2">Người liên Hệ</p>
-        <hr>
+        <div id="plist" class="people-list">
+            <p class="pt-2 m-2">Người liên Hệ</p>
+            <!-- Search form -->
+            <form action="/message/findUserName=${userName}" method="POST">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="userName" value='${userName}' placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
 
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
+            <ul class="list-unstyled chat-list mt-2 mb-0">
+                <c:forEach var="user" items="${usersList}">
+                    <li class="clearfix">
+                        <c:if test="${user.userId ne userId }">
+                            <a href="<c:url value='/message/receiverId=${user.userId}'/>">
+                                <img src="/assets/avt-profile.png" alt="avatar">
+                                <div class="about">
+                                    <div class="name">${user.userName}</div>
+                                    <div class="status">
+                                        <c:choose>
+                                            <c:when test="${user.status eq true}">
+                                                <i class="fa fa-circle online"></i> Online
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="fa fa-circle offline"></i> Offline
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                </div>
+                            </a>
+                        </c:if>
+                    </li>
+                </c:forEach>
+            </ul>
         </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-        <div class="d-flex rightSidebar__user mb-2">
-            <img src="/assets/avt-profile.png" alt="" class="rightSidebar__userImg me-2">
-            <p class="rightSidebar__userName">Nguyễn Chí Thanh</p>
-        </div>
-
-
     </div>
 </div>
 <script src="function.js"></script>
