@@ -1,4 +1,4 @@
-	Posts getPostById(int postId);
+
 package com.ALOHCMUTE.service;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public interface IPostsService {
 
 	List<Posts> findAll();
 	
-	List<Posts> findPostById(int userId);
+	List<Posts> findPostByUserId(int userId);
 
 	<S extends Posts> S save(S entity);
 

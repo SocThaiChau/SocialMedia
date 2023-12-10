@@ -8,7 +8,6 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class ProfileModel {
 	private int profileId;
     private String avatar;

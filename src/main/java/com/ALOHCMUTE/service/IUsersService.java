@@ -24,4 +24,6 @@ public interface IUsersService {
     int getUserIdByEmail(String email);
     
     List<Users> getUsernamesStartingWith(String prefix);
+    
+    Users findUserById(int receiverId);
 }

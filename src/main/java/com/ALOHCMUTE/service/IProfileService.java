@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.ALOHCMUTE.entity.Profiles;
+import com.ALOHCMUTE.entity.Users;
 
 
 public interface IProfileService {
@@ -17,5 +18,9 @@ public interface IProfileService {
     Page<Profiles> findAll(Pageable pageable);
 
     List<Profiles> findAll();
+
+	Profiles findByUserId(int userId);
+
+
 
 }

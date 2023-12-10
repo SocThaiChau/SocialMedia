@@ -26,7 +26,7 @@ import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.MessageModel;
 import com.ALOHCMUTE.model.PostsModel;
 import com.ALOHCMUTE.service.IMessageService;
-import com.ALOHCMUTE.service.IUserService;
+import com.ALOHCMUTE.service.IUsersService;
 
 @Controller
 public class MessageController {
@@ -35,11 +35,11 @@ public class MessageController {
 	IMessageService messageService;
 	
 	@Autowired
-	IUserService userService;
+	IUsersService userService;
 	
 	@RequestMapping("/message")
 	public String getReceivers(ModelMap model) {
-	    List<Users> usersList = userService.findAll();
+	    List<Users> usersList = userService.getAllUsers();
 		model.addAttribute("usersList", usersList);
 	    return "message";
 	}
@@ -49,7 +49,7 @@ public class MessageController {
 		MessageModel messageModel = new MessageModel();
         List<Messages> receiverMessage = messageService.findUserById(receiverId);
         Users receiver = userService.findUserById(receiverId);
-        List<Users> usersList = userService.findAll();
+        List<Users> usersList = userService.getAllUsers();
         
         model.addAttribute("message", messageModel);
         model.addAttribute("receiverId", receiverId);

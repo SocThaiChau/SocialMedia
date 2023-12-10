@@ -16,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ALOHCMUTE.entity.Profiles;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.repository.ProfileRepository;
-import com.ALOHCMUTE.repository.UserRepository;
+import com.ALOHCMUTE.repository.UsersRepository;
 import com.ALOHCMUTE.service.IProfileService;
 @Controller
 public class ProfileController {
-	private final UserRepository userRepository;
+	
+	private final UsersRepository userRepository;
 	@Autowired
 	IProfileService profileService;
     @Autowired
-    public ProfileController(UserRepository userRepository) {
+    public ProfileController(UsersRepository userRepository) {
         this.userRepository = userRepository;
     }
     @RequestMapping("/profile")

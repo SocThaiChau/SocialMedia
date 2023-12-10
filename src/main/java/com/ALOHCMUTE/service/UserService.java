@@ -6,13 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ALOHCMUTE.entity.Profiles;
 import com.ALOHCMUTE.entity.Users;
-import com.ALOHCMUTE.repository.UserRepository;
+import com.ALOHCMUTE.repository.UsersRepository;
 
 @Service
 public class UserService{
 
 	@Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
 
     public Users getUserByUsername(String username) {
         return userRepository.findByUserName(username);

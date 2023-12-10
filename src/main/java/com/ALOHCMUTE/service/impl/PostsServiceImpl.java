@@ -77,13 +77,9 @@ public class PostsServiceImpl implements IPostsService{
         return postsRepository.findById(postId).orElse(null);
     }
 	@Override
-	public List<Posts> findPostById(int userId) {
+	public List<Posts> findPostByUserId(int userId) {
 		return postsRepository.findPostById(userId);
 	}
 
 	
 }
-
-	@Override
-    public Posts getPostById(int postId) {
-        return postsRepository.findById(postId).orElse(null);

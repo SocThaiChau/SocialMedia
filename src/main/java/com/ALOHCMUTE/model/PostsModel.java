@@ -96,15 +96,19 @@ public class PostsModel {
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
-		return userId;
+	/**
+	 * @return the users
+	 */
+	public Users getUsers() {
+		return users;
 	}
 	/**
-	 * @param userId the userId to set
+	 * @param users the users to set
 	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
+	
 	
 	
 }

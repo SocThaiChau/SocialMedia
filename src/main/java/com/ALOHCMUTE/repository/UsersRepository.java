@@ -12,6 +12,8 @@ import com.ALOHCMUTE.entity.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer>{
 	Users findByUserName(String username);
+	
+	Users findByUserId(int userId);
 
 	Users findUserByEmail(String email);
 
@@ -21,4 +23,7 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 
 	@Query("SELECT u FROM Users u WHERE u.userName LIKE :prefix%")
 	List<Users> findUsersStartingWith(@Param("prefix") String prefix);
+	
+	@Query("SELECT u FROM Users u WHERE u.userId = :receiverId")
+	Users findUserById(@Param("receiverId") int receiverId);
 }

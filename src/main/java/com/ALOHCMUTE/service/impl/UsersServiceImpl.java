@@ -108,4 +108,10 @@ public class UsersServiceImpl implements IUsersService {
 	        List<Users> usernames = usersRepository.findUsersStartingWith(prefix);
 	        return usernames;
 	    }
+
+	@Override
+	public Users findUserById(int receiverId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

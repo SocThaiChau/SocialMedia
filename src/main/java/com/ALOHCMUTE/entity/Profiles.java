@@ -3,7 +3,6 @@ package com.ALOHCMUTE.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.ALOHCMUTE.repository.UserRepository;
 
 import lombok.*;
 

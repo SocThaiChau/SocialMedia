@@ -11,7 +11,6 @@ public class CustomSiteMeshFilter extends ConfigurableSiteMeshFilter{
 		.addDecoratorPath("/homeweb", "/decorators/web.jsp")
 		.addDecoratorPath("/add", "/decorators/home.jsp")
 		.addDecoratorPath("/edit/*", "/decorators/home.jsp")
-		.addDecoratorPath("/profile/userId*", "/decorators/home.jsp")
 		.addDecoratorPath("/message", "/decorators/message.jsp")
 		.addDecoratorPath("/message/receiverId*", "/decorators/message.jsp")
 		.addDecoratorPath("/comments/*", "/decorators/home.jsp")
@@ -19,7 +18,7 @@ public class CustomSiteMeshFilter extends ConfigurableSiteMeshFilter{
 
 		.addDecoratorPath("/index", "/decorators/home.jsp")
 		.addDecoratorPath("/profile", "/decorators/home.jsp")
-		.addDecoratorPath("/user", "/decorators/home.jsp")
+		.addDecoratorPath("/profile/userId*", "/decorators/user.jsp")
 		
 		.addDecoratorPath("/admin/*", "admin.jsp")
 		.addExcludedPath("/login*").addExcludedPath("/login/*")
@@ -27,5 +26,3 @@ public class CustomSiteMeshFilter extends ConfigurableSiteMeshFilter{
 		.addExcludedPath("/api/**").addExcludedPath("/api/**");
 	}
 }
-
-		.addDecoratorPath("/registration", "/decorators/registration.jsp")

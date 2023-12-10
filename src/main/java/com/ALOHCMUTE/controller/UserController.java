@@ -23,7 +23,7 @@ import com.ALOHCMUTE.model.MessageModel;
 import com.ALOHCMUTE.model.UserModel;
 import com.ALOHCMUTE.service.IMessageService;
 import com.ALOHCMUTE.service.IPostsService;
-import com.ALOHCMUTE.service.IUserService;
+import com.ALOHCMUTE.service.IUsersService;
 import com.ALOHCMUTE.service.UserService;
 
 @Controller
@@ -31,7 +31,7 @@ public class UserController {
 
 
 	@Autowired
-	IUserService userService;
+	IUsersService userService;
 
 	@Autowired
 	IPostsService postService;
@@ -41,7 +41,7 @@ public class UserController {
 	@GetMapping("/profile/userId={userId}")
 	public ModelAndView getPostByUserId(@PathVariable int userId, ModelMap model) {
 	    UserModel userModel = new UserModel();
-	    List<Posts> userPost = postService.findPostById(userId);  // Fix: Use the provided userId parameter
+	    List<Posts> userPost = postService.findPostByUserId(userId);  // Fix: Use the provided userId parameter
 	    userPost.sort(Comparator.comparingInt(Posts::getPostId).reversed());
 
 	    List<String> base64Images = new ArrayList<>();
@@ -54,11 +54,10 @@ public class UserController {
 	            base64Images.add(null);
 	        }
 	    }
-
+	    model.addAttribute("postsList", userPost);
 	    model.addAttribute("base64Images", base64Images);
 	    model.addAttribute("user", userModel);
 	    model.addAttribute("userId", userId);  // Fix: Use the provided userId parameter
-	    model.addAttribute("postsList", userPost);
 	    return new ModelAndView("user", model);
 	}
 
