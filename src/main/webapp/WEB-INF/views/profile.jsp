@@ -36,22 +36,13 @@
 <%--	<c:forEach items="${listProfile}" var="profiles">--%>
 	<div class="col-md-12 mb-5">
 		<div class="card-body">
-			<div class="d-flex flex-column align-items-center text-center">
-				<img
-						src="${listProfile.background}"
-						alt="Background" class="img-fluid"
-						style="width: 1240px; height: 300px; border-radius: 10px;">
-				<div class="d-flex mt-3" style="text-align: left; color: black; margin-top: 100px">
-					<img
-							src="${listProfile.avatar}"
-							alt="Avatar" class="rounded-circle" width="150"
-							>
-
-
-				</div>
-				<div class="pt-3">
-					<p style="font-size: 25px">${listProfile.users.userName}</p>
-				</div>
+				 <div class=" border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-2">
+                    <img class="rounded-circle mt-5" src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png" width="90">
+                    <%--<input class="mt-4" type="file" >
+                    <button class="btn btn-primary ">Submit</button>--%>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -106,8 +97,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
-				<a href="/profile/edit/${userId}"class="btn btn-info " target="__blank">Chỉnh sửa thông tin
-					cá nhân</a>
+				<a href="/profile/edit/${userId}"class="btn btn-primary " target="__blank">Chỉnh sửa</a>
 
 			</div>
 		</div>

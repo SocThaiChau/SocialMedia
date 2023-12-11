@@ -113,11 +113,10 @@ public class ProfileController {
 
 	@GetMapping("/profile/edit/{userId}")
     public ModelAndView viewProfile(@PathVariable("userId") int userId, ModelMap model) {
-		Optional<Profiles> opt = profileService.findById(userId);
-		//Optional<Users> opt = userService.findUserById(userId);
+		Optional<Users> opt = userService.findById(userId);
 		UserModel userModel = new UserModel();
 		if(opt.isPresent()) {
-			Profiles entity = opt.get();
+			Users entity = opt.get();
 			BeanUtils.copyProperties(entity, userModel); //copy từ entity sang Model
 			model.addAttribute("user", userModel);
 			return new ModelAndView("editProfile",model);
@@ -128,9 +127,7 @@ public class ProfileController {
 
 	@PostMapping("/profile/edit/{userId}/save")
     public ModelAndView editProfile(@PathVariable("userId") int userId,
-                              @Valid @ModelAttribute("user") UserModel userModel,
-                              @RequestParam("imageAvatar") MultipartFile fileAvt,
-//                            @RequestParam("imageBackGround") MultipartFile fileBg,
+                              @Valid @ModelAttribute("user") UserModel userModel,          
                               BindingResult result,
                               ModelMap model,
                               HttpSession session) {
@@ -141,42 +138,6 @@ public class ProfileController {
         }
 
             Users entity = new Users();
-            Profiles profiles = new Profiles();
-            if (fileAvt != null && !fileAvt.isEmpty()) {
-    	        try (InputStream is = fileAvt.getInputStream()) {
-    	            byte[] imageBytes = is.readAllBytes();
-//    	            entity.setProfiles(null)
-    	            
-    	            // Set values for each field in Profiles
-    	            profiles.setAvatar(Base64.getEncoder().encodeToString(imageBytes));
-    	            profiles.setBackground("path/to/background"); // Set background value
-    	            
-    	            // Set Profiles for Users
-    	            entity.setProfiles(profiles);
-    	            
-    	            // Chuyển đổi byte[] thành base64 và đặt vào model
-    	            String imageAvatarBase64 = Base64.getEncoder().encodeToString(imageBytes);
-    	            
-    	         // Chuyển đổi byte[] thành base64 và đặt vào model
-//    	            String imageAvatarBase64 = null;
-                    //String imageAvatarBase64 = Base64.getEncoder().encodeToString(imageBytes);
-                    model.addAttribute("imageAvatarBase64", imageAvatarBase64);
-    	        } catch (IOException e) {
-    	            e.printStackTrace();
-    	            return new ModelAndView("profile");
-    	        }
-    	    }
-
-            // Xử lý ảnh nền
-//            if (!fileBg.isEmpty()) {
-//                try {
-//                    byte[] imageBgBytes = fileBg.getBytes();
-//                    entity.setImageBackGround(imageBgBytes);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    return "error";
-//                }
-//            }
             // Cập nhật thông tin từ UserModel vào entity Users
             BeanUtils.copyProperties(userModel, entity);
             // Lưu thông tin người dùng đã được cập nhật

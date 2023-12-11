@@ -1,6 +1,7 @@
 package com.ALOHCMUTE.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public <S extends Users> S save(S entity) {
 		return userRepository.save(entity);
+	}
+
+	@Override
+	public Optional<Users> findById(Integer id) {
+		return userRepository.findById(id);
 	}
 	
 	
