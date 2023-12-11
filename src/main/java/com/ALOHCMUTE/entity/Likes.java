@@ -1,19 +1,24 @@
 package com.ALOHCMUTE.entity;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import lombok.*;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Likes")
 public class Likes implements Serializable {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LikeId")
     private int likeId;
-    private Boolean status;
+    
 
     @ManyToOne
     @JoinColumn(name = "userId")
