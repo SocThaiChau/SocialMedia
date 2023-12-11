@@ -40,9 +40,9 @@
                         <div class="d-flex align-items-center mt-3">
                             <span class=" my-2 me-2">Giới tính</span>
                             <div class="">
-                            <select name="cars" id="cars">
-      							<option value="${user.gender}name="gender">Nam</option>
-      							<option value="${user.gender}name="gender">Nữ</option>
+                            <select name="gender">
+      							<option value="Nam"name="gender">Nam</option>
+      							<option value="Nữ" name="gender">Nữ</option>
                             </select>
                             </div>
                         </div>

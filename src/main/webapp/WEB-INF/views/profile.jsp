@@ -67,13 +67,6 @@
 				<hr>
 				<div class="row">
 					<div class="col-sm-3">
-						<h6 class="mb-0">Day Of Birthday</h6>
-					</div>
-					<div class="col-sm-9 text-secondary">${listProfile.users.dob}</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col-sm-3">
 						<h6 class="mb-0">Email</h6>
 					</div>
 					<div class="col-sm-9 text-secondary">${listProfile.users.email}</div>
