@@ -80,8 +80,12 @@
 <%--                        <a href="/comments/${post.postId}" class="btn btn-link"><i class="fa-regular fa-comment ps-3 pe-3"> 50 </i></a>--%>
                     </div>
                     <div class="me-4">
-                        <a href="/edit/${post.postId}" > <i class="fa-solid fa-pen-to-square ps-3 pe-3"></i></a>
-                        <a data-bs-toggle="modal" style="cursor: pointer;" data-bs-target="#ModalDeletePost${post.postId}" data-post-id="${post.postId}"><i class="fa-solid fa-trash ps-3 pe-3 text-danger"></i></a>
+                        <c:if test="${userId eq post.users.userId}">
+                            <a href="/edit/${post.postId}"><i class="fa-solid fa-pen-to-square ps-3 pe-3"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#ModalDeletePost${post.postId}" data-post-id="${post.postId}">
+                                <i class="fa-solid fa-trash ps-3 pe-3 text-danger"></i>
+                            </a>
+                        </c:if>
                     </div>
                </div>
             		<!-- The Modal Button Delete Post-->
@@ -104,36 +108,27 @@
 					    </div>
 					  </div>
 					</div>
-                <c:forEach items="${comments}" var="comment" varStatus="commentLoop">
+                <div class="comments-container" id="comments_${post.postId}" style="display: none;">
+                    <c:forEach items="${comments}" var="comment" varStatus="commentLoop">
 
                         <c:if test="${comment.posts.postId eq post.postId}">
-                            <div class="status__userProfile d-flex m-2 pt-3 ps-3">
-                                <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
-                                <div>
-                                    <h6 class="mb-1" style="font-size: 14px;">${comment.users.userName}</h6>
-                                    <p class="mb-1" style="font-size: 12px;">${comment.createTime}</p>
-                                    <p class="ms-4 me-5">${comment.content}</p>
-                                    <c:if test="${not empty base64Images2[commentLoop.index]}">
-                                        <img src="data:image/jpeg;base64,${base64Images2[commentLoop.index]}" alt="img"
-                                             class="status__contentImg ms-4 me-5">
-                                    </c:if>
+                            <div class="comment-container">
+                                <div class="status__userProfile d-flex m-2 pt-3 ps-3">
+                                    <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">
+                                    <div>
+                                        <h6 class="mb-1" style="font-size: 14px;">${comment.users.userName}</h6>
+                                        <p class="mb-1" style="font-size: 12px;">${comment.createTime}</p>
+                                        <p class="ms-4 me-5">${comment.content}</p>
+                                        <c:if test="${not empty base64Images2[commentLoop.index]}">
+                                            <img src="data:image/jpeg;base64,${base64Images2[commentLoop.index]}" alt="img"
+                                                 class="status__contentImg ms-4 me-5">
+                                        </c:if>
+                                    </div>
                                 </div>
                             </div>
-<%--                            <div class="comment-container">--%>
-<%--                                <div class="comment-line">--%>
-<%--                                    <img src="/assets/avt-profile.png" alt="" class="status__userImg me-1">--%>
-<%--                                    <p class="ms-4 me-5">${comment.users.userName}</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="comment-line">--%>
-<%--                                    <p class="ms-4 me-5">${comment.content}</p>--%>
-<%--                                    <c:if test="${not empty base64Images2[commentLoop.index]}">--%>
-<%--                                        <img src="data:image/jpeg;base64,${base64Images2[commentLoop.index]}" alt="img"--%>
-<%--                                             class="status__contentImg ms-4 me-5">--%>
-<%--                                    </c:if>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </c:if>
-                </c:forEach>
+                    </c:forEach>
+                </div>
 				<!-- Form for adding new comments -->
 				<form class="comment-form ms-4 me-5" action="/comments/save-comment" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="postId" value="${post.postId}"></input>
@@ -237,62 +232,13 @@ function likePost(postId) {
 }
 
 
-// Function to set a cookie
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
-}
-
-// Function to get a cookie value
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-// Function to handle form submission
-function handleFormSubmission() {
-    // Record the scroll position
-    var scrollX = window.scrollX || window.pageXOffset;
-    var scrollY = window.scrollY || window.pageYOffset;
-
-    // Set cookies with the scroll position
-    setCookie("scrollX", scrollX, 1);
-    setCookie("scrollY", scrollY, 1);
-}
-
-// Function to scroll to the recorded position
-function scrollToRecordedPosition() {
-    var scrollX = getCookie("scrollX");
-    var scrollY = getCookie("scrollY");
-
-    if (scrollX !== null && scrollY !== null) {
-        // Scroll to the recorded position
-        window.scrollTo(scrollX, scrollY);
-
-        // Clear the cookies after scrolling
-        setCookie("scrollX", "", -1);
-        setCookie("scrollY", "", -1);
-    }
-}
-
-// Attach the handleFormSubmission function to the form's submit event
-document.getElementById("yourFormId").addEventListener("submit", handleFormSubmission);
-
-// Call the scrollToRecordedPosition function when the page is loaded
-window.addEventListener("load", scrollToRecordedPosition);
-
-
+$(document).ready(function () {
+    // Toggle comments visibility when the "Comment" button is clicked
+    $('.toggle-comments').on('click', function () {
+        var postId = $(this).data('post-id');
+        $('#comments_' + postId).toggle();
+    });
+});
 </script>
 
 

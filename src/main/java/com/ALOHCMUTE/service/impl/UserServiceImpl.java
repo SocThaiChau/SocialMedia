@@ -30,4 +30,11 @@ public class UserServiceImpl implements IUserService{
 		return userRepository.findUserByUserName(userName);
 	}
 
+	@Override
+	public <S extends Users> S save(S entity) {
+		return userRepository.save(entity);
+	}
+	
+	
+
 }
