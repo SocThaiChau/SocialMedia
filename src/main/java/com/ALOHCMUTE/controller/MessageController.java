@@ -1,7 +1,11 @@
 package com.ALOHCMUTE.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ALOHCMUTE.entity.Comments;
 import com.ALOHCMUTE.entity.Messages;
 import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.MessageModel;
@@ -66,7 +71,19 @@ public class MessageController {
 		List<Messages> receiverMessage = messageService.findUserById(receiverId, userId);
         Users receiver = userService.findUserById(receiverId);
         List<Users> usersList = userService.findAll();
+        List<String> base64Images = new ArrayList<>();
+        
+        for (Messages message : receiverMessage) {
+			byte[] imageData = message.getImage();
+			if (imageData != null && imageData.length > 0) {
+				String base64Image = Base64.getEncoder().encodeToString(imageData);
+				base64Images.add(base64Image);
+			} else {
+				base64Images.add(null);
+			}
+		}
 
+        model.addAttribute("base64Images", base64Images);
         model.addAttribute("message", messageModel);
         model.addAttribute("userId", userId);
         model.addAttribute("receiverId", receiverId);
@@ -86,33 +103,41 @@ public class MessageController {
     }
 
 	@PostMapping("/sendMessage")
-	public ModelAndView sendMessage(ModelMap model,
+	public ModelAndView sendMessage(ModelMap model, @RequestParam("image") MultipartFile imageFile,
 			@Valid @ModelAttribute("messages") MessageModel messageModel,
 			BindingResult result) {
-
+		
+		Messages entity = new Messages();
+		
 		if(result.hasErrors()) {
 			return new ModelAndView("chatWithReceiver");
 		}
+		
+		if (!imageFile.isEmpty()) {
+            try (InputStream is = imageFile.getInputStream()) {
+            	byte[] imageBytes = is.readAllBytes();
+                entity.setImage(imageBytes);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+        }
 
-		if(!messageModel.getContent().isBlank()){
-			Messages entity = new Messages();
-			long currentTimestamp = System.currentTimeMillis();
-			Date currentDate = new Date(currentTimestamp);
-			SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-			String formattedDate = dateFormat.format(currentDate);
-			Date parsedDate = null;
-			try {
-				parsedDate = dateFormat.parse(formattedDate);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-
-			//copy từ Model sang entity
-			BeanUtils.copyProperties(messageModel, entity);
-			// Lưu thông tin thời gian
-			entity.setCreateTime(parsedDate);
-			messageService.save(entity);
+		long currentTimestamp = System.currentTimeMillis();
+		Date currentDate = new Date(currentTimestamp);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+		String formattedDate = dateFormat.format(currentDate);
+		Date parsedDate = null;
+		try {
+			parsedDate = dateFormat.parse(formattedDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+
+		//copy từ Model sang entity
+		BeanUtils.copyProperties(messageModel, entity);
+		// Lưu thông tin thời gian
+		entity.setCreateTime(parsedDate);
+		messageService.save(entity);
 
 		return new ModelAndView("redirect:/message/receiverId=" + messageModel.getReceiverId(), model);
 	}

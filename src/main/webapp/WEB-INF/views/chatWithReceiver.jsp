@@ -71,7 +71,6 @@
     <!-- content-area -->
     <div class="content-area col-9 bg-white">
         <div class="chat d-flex flex-column h-100">
-        	<form action="/sendMessage" method="POST">
 			<div class="chat-header clearfix">
 				<div class="row">
 					<div class="col-lg-6" style="display: flex; align-items: center;">
@@ -90,23 +89,15 @@
                 			</c:choose>
     					</div>
 					</div>
-
+					
 					<div class="col-lg-6 text-lg-end text-sm-start mt-lg-0 mt-sm-3">
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-phone"></i></a>
-						<a href="javascript:void(0);" class="btn btn-outline-primary" id="imageButton"><i class="fa fa-image"></i></a>
 						<a href="javascript:void(0);" class="btn btn-outline-info"><i
 							class="fa fa-cogs"></i></a> <a href="javascript:void(0);"
 							class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
-						<div class="mb-3">
-							<input type="hidden" name="receiverId" value="${receiverId}">
-            				<input type="hidden" name="status" value="True">
-            				<input type="hidden" name="users.userId" value="${userId}">
-							<input type="file" class="form-control visually-hidden" id="imageInput" name="image" value="${message.image}" accept="image/*">
-						</div>
 					</div>
 				</div>
 			</div>
-			</form>
 			<div class="chat-history">
 				<ul class="m-b-0">
 					<c:forEach var="message" items="${receiverMessage}">
@@ -118,6 +109,9 @@
                             			<img src="/assets/avt-profile.png" alt="avatar" style="width: 50px;">
                         			</div>
                         			<div class="message other-message float-right text-lg-end text-sm-start mt-lg-0 mt-sm-3">${message.content}</div>
+                        			<c:if test="${not empty base64Images[loop.index]}">
+                    				<img src="data:image/jpeg;base64,${base64Images[loop.index]}" alt="img" class="status__contentImg ms-4 me-5"/>
+									</c:if>
                     			</li>
                 			</c:when>
                 			<c:otherwise>
@@ -126,6 +120,9 @@
                             			<span class="message-data-time">${message.createTime}</span>
                         			</div>
                         			<div class="message my-message">${message.content}</div>
+                        			<c:if test="${not empty base64Images[loop.index]}">
+                    				<img src="data:image/jpeg;base64,${base64Images[loop.index]}" alt="img" class="status__contentImg ms-4 me-5"/>
+									</c:if>
                     			</li>
                 			</c:otherwise>
             			</c:choose>
@@ -134,41 +131,27 @@
 			</div>
 			
 			<div class="flex-grow-1"></div>
-			<form action="/sendMessage" method="POST">
+			<form action="/sendMessage" method="POST" enctype="multipart/form-data">
 			<div class="chat-message clearfix">
             	<div class="input-group mb-0">
             		<input type="hidden" name="receiverId" value="${receiverId}">
             		<input type="hidden" name="status" value="True">
             		<input type="hidden" name="users.userId" value="${userId}">
-                	<input type="text" class="form-control" name="content" value="${message.content}" placeholder="Enter text here..."></input>
+            		<input type="text" class="form-control" name="content" value="${message.content}" placeholder="Enter text here..."></input>
                 	<div class="input-group-append">
+                		<label style="cursor: pointer;" for="image" class="image-icon-label me-2"><i class="fas fa-image"></i></label>
                     	<button type="submit" class="btn btn-outline-secondary" type="button">
                         	<i class="fas fa-paper-plane fa-xs"></i>
                     	</button>
                 	</div>
             	</div>
-        	</div>
-        	</form>
-		</div>
-    </div>
-    
+            	<input type="file" class="form-control visually-hidden" id="image" name="image" accept="image/png, image/jpeg">
+            </div>
+            </form>
+        </div>
+	</div>
 </div>
 <script src="function.js"></script>
-<script>
-  document.getElementById('imageButton').addEventListener('click', function() {
-    // Trigger click on the hidden file input when the button is clicked
-    document.getElementById('imageInput').click();
-  });
-
-  // Add an event listener to handle file selection
-  document.getElementById('imageInput').addEventListener('change', function() {
-    // Handle the selected file (you can access it using this.files[0])
-    var selectedImage = this.files[0];
-
-    // Add your code to process the selected image here
-    console.log('Selected Image:', selectedImage);
-  });
-</script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
