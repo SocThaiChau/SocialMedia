@@ -106,7 +106,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
-				<a href="/profile/${listProfile.users.userId}/edit"class="btn btn-info " target="__blank">Chỉnh sửa thông tin
+				<a href="/profile${listProfile.users.userId}/edit"class="btn btn-info " target="__blank">Chỉnh sửa thông tin
 					cá nhân</a>
 
 			</div>

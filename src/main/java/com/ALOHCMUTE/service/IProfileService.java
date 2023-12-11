@@ -21,4 +21,7 @@ public interface IProfileService {
 
 	List<Posts> findAllById(Iterable<Integer> ids);
 	Optional<Profiles> findById(Integer id);
+	
+	<S extends Profiles> S save(S entity);
+
 }

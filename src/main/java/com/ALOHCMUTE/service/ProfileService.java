@@ -44,6 +44,11 @@ public class ProfileService implements IProfileService{
 	public Page<Profiles> findAll(Pageable pageable) {
 		return profileRepository.findAll(pageable);
 	}
+	@Override
+	public <S extends Profiles> S save(S entity) {
+		// TODO Auto-generated method stub
+		return profileRepository.save(entity);
+	}
 
 
 }
