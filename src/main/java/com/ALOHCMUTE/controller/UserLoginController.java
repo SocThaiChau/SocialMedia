@@ -2,6 +2,7 @@ package com.ALOHCMUTE.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.AllArgsConstructor;
 import com.ALOHCMUTE.service.*;
+import com.ALOHCMUTE.entity.Profiles;
+import com.ALOHCMUTE.entity.Users;
 import com.ALOHCMUTE.model.*;
 @Controller
 @AllArgsConstructor
 @SessionAttributes("userDto")
 public class UserLoginController {
     private IUsersService userService;
+    @Autowired
+    private ProfileService profileservice;
     @ModelAttribute("usermodel")
     public UserDto userModel(){
         return new UserDto();
@@ -32,12 +37,18 @@ public class UserLoginController {
         if (userService.checkUserbyEmail(userModel.getEmail()) == false) {
             return "redirect:/login?emailwrong";
         }
-
+        Profiles profile = new Profiles();
         if (userService.checkPasswordUser(userModel.getEmail(), userModel.getPassword())) {
             int userId = userService.getUserIdByEmail(userModel.getEmail());
             // Set the user ID in the session
             session.setAttribute("userId", userId);
+            
+    		Users user = new Users();
+    		user.setUserId(userId);
 
+    		// Set the user information in the entity
+    		profile.setUsers(user);
+    		profileservice.save(profile);
             return "redirect:/home?success";
         }
 
