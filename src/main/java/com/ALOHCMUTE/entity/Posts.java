@@ -29,9 +29,21 @@ public class Posts implements Serializable {
     @Lob
     @Column(name = "image_data")
     private byte[] imageData;
-
     
-    @Column(name = "PostTime", columnDefinition = "nvarchar(2000)")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
+
+  
+    public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	@Column(name = "PostTime", columnDefinition = "nvarchar(2000)")
     private String postTime;
     
     @Column(name = "PrivacyLevel")
@@ -92,6 +104,10 @@ public class Posts implements Serializable {
 		return users;
 	}
 
+	public int getUsersId() {
+		return users.getUserId ();
+	}
+
 	public void setUsers(Users users) {
 		this.users = users;
 	}
@@ -111,6 +127,6 @@ public class Posts implements Serializable {
 	public void setComments(List<Comments> comments) {
 		this.comments = comments;
 	}
-    
+     
     
 }

@@ -33,20 +33,44 @@ public class Comments implements Serializable {
     @Column(name = "CreateTime")
     private Date createTime;
     
-    @Lob
+    public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	@Lob
     @Column(name = "Image")
     private byte[] image;
     
 //    @Column(name = "CommentReplyId")
 //    private int commentReplyId;
 
-    @ManyToOne
+    public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	@ManyToOne
     @JoinColumn(name = "userId")
     private Users users;
 
     @ManyToOne
     @JoinColumn(name = "postId")
     private Posts posts;
+
+	public Posts getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Posts posts) {
+		this.posts = posts;
+	}
 
 	@OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;

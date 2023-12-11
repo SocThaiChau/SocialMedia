@@ -38,7 +38,6 @@
             </div>
             <div class="notification__content m-2 pt-3 ps-3 pb-3 d-flex">
                 <h6 class="mb-1" style="font-size: 14px;">Nguyễn Chí Thanh đã nhắc đến bạn trong 1 bình luận</h6>
-
             </div>
 
         </div>

@@ -95,6 +95,10 @@ public class PostsController {
 		// Lưu thông tin thời gian
 		entity.setPostTime(formattedDate);
 		postsService.save(entity);
+		
+		 // Gọi phương thức để tạo thông báo khi bài đăng mới được tạo
+	    postsService.createNotificationForNewPost(entity.getUsersId(), entity.getPostId());
+
 		return new ModelAndView("redirect:/home" ,model);
 		
 	}

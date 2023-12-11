@@ -22,7 +22,15 @@ public class Users implements Serializable {
     @Column(name = "UserId")
     private int userId;
     
-    @Column(name = "UserName", columnDefinition = "nvarchar(200)")
+    public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	@Column(name = "UserName", columnDefinition = "nvarchar(200)")
     private String userName;
     
     @Column(name = "Address", columnDefinition = "nvarchar(200)")

@@ -1,6 +1,7 @@
 package com.ALOHCMUTE.service.impl;
 
 import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.ALOHCMUTE.entity.Posts;
 import com.ALOHCMUTE.repository.PostsRepository;
 import com.ALOHCMUTE.service.IPostsService;
+import com.ALOHCMUTE.service.NotificationService;
+
 
 @Service
 public class PostsServiceImpl implements IPostsService{
@@ -71,6 +74,12 @@ public class PostsServiceImpl implements IPostsService{
 	public void deleteAll() {
 		postsRepository.deleteAll();
 	}
-
+	
+	@Autowired
+	private NotificationService notificationService;
+	@Override
+	public void createNotificationForNewPost(int userId, int postId) {
+	    notificationService.createNotificationForNewPost(userId, postId);
+	}
 	
 }

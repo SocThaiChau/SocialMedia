@@ -1,5 +1,6 @@
 package com.ALOHCMUTE.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,8 @@ public interface IPostsService {
 	void deleteById(Integer id);
 
 	long count();
+	
+	void createNotificationForNewPost(int userId, int postId);
 
 	Optional<Posts> findById(Integer id);
 

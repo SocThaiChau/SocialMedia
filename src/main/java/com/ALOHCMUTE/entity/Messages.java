@@ -29,7 +29,15 @@ public class Messages implements Serializable {
     @Column(name = "CreateTime")
     private Date createTime;
     
-    @Column(name = "ReceiverId")
+    public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	@Column(name = "ReceiverId")
     private int receiverId;
     
     @Column(name = "Status")
