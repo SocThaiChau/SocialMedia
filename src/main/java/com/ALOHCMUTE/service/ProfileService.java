@@ -1,7 +1,9 @@
 package com.ALOHCMUTE.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.ALOHCMUTE.entity.Posts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +26,16 @@ public class ProfileService implements IProfileService{
 	}
 
 	@Override
+	public List<Posts> findAllById(Iterable<Integer> ids) {
+		return null;
+	}
+
+	@Override
+	public Optional<Profiles> findById(Integer id) {
+		return profileRepository.findById(id);
+	}
+
+	@Override
 	public List<Profiles> findAll(Sort sort) {
 		return profileRepository.findAll(sort);
 	}
@@ -32,4 +44,6 @@ public class ProfileService implements IProfileService{
 	public Page<Profiles> findAll(Pageable pageable) {
 		return profileRepository.findAll(pageable);
 	}
+
+
 }
