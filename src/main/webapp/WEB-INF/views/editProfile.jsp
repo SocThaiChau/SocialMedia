@@ -46,6 +46,7 @@
                             </select>
                             </div>
                         </div>
+                       <input type="hidden" value="true" name="status">
                         <div class="row mt-3">
                             <span class="my-2">Địa chỉ</span>
                             <div class="col">
